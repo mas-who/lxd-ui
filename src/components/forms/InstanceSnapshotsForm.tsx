@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { Input, Select } from "@canonical/react-components";
+import { Icon, Input, Notification, Select } from "@canonical/react-components";
 import { optionYesNo } from "util/instanceOptions";
 import { SharedFormikTypes, SharedFormTypes } from "./sharedFormTypes";
 import { getInstanceConfigurationRow } from "components/forms/InstanceConfigurationRow";
@@ -7,6 +7,9 @@ import InstanceConfigurationTable from "components/forms/InstanceConfigurationTa
 import { getInstanceKey } from "util/instanceConfigFields";
 import { optionRenderer } from "util/formFields";
 import SnapshotScheduleInput from "components/SnapshotScheduleInput";
+import { useProject } from "context/project";
+import { isSnapshotsDisabled } from "util/snapshots";
+import { useDocs } from "context/useDocs";
 
 export interface SnapshotFormValues {
   snapshots_pattern?: string;
@@ -31,50 +34,74 @@ interface Props {
 }
 
 const InstanceSnapshotsForm: FC<Props> = ({ formik }) => {
+  const { project } = useProject();
+  const snapshotDisabled = isSnapshotsDisabled(project);
+  const docBaseLink = useDocs();
+
   return (
-    <InstanceConfigurationTable
-      rows={[
-        getInstanceConfigurationRow({
-          formik,
-          label: "Snapshot name pattern",
-          name: "snapshots_pattern",
-          defaultValue: "",
-          children: <Input placeholder="Enter name pattern" type="text" />,
-        }),
+    <>
+      {snapshotDisabled && (
+        <Notification
+          severity="caution"
+          title="Snapshot creation blocked for the current project"
+        >
+          Snapshot scheduling settings may not work as expected.{" "}
+          <a
+            href={`${docBaseLink}/reference/projects/#project-restrictions`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Learn more about project restrictions
+            <Icon className="external-link-icon" name="external-link" />
+          </a>
+        </Notification>
+      )}
+      <InstanceConfigurationTable
+        rows={[
+          getInstanceConfigurationRow({
+            formik,
+            label: "Snapshot name pattern",
+            name: "snapshots_pattern",
+            defaultValue: "",
+            children: <Input placeholder="Enter name pattern" type="text" />,
+          }),
 
-        getInstanceConfigurationRow({
-          formik,
-          label: "Expire after",
-          name: "snapshots_expiry",
-          defaultValue: "",
-          children: <Input placeholder="Enter expiry expression" type="text" />,
-        }),
+          getInstanceConfigurationRow({
+            formik,
+            label: "Expire after",
+            name: "snapshots_expiry",
+            defaultValue: "",
+            children: (
+              <Input placeholder="Enter expiry expression" type="text" />
+            ),
+          }),
 
-        getInstanceConfigurationRow({
-          formik,
-          label: "Snapshot stopped instances",
-          name: "snapshots_schedule_stopped",
-          defaultValue: "",
-          readOnlyRenderer: (val) => optionRenderer(val, optionYesNo),
-          children: <Select options={optionYesNo} />,
-        }),
+          getInstanceConfigurationRow({
+            formik,
+            label: "Snapshot stopped instances",
+            name: "snapshots_schedule_stopped",
+            defaultValue: "",
+            readOnlyRenderer: (val) => optionRenderer(val, optionYesNo),
+            children: <Select options={optionYesNo} />,
+          }),
 
-        getInstanceConfigurationRow({
-          formik,
-          label: "Schedule",
-          name: "snapshots_schedule",
-          defaultValue: "",
-          children: (
-            <SnapshotScheduleInput
-              value={formik.values.snapshots_schedule}
-              setValue={(val) =>
-                void formik.setFieldValue("snapshots_schedule", val)
-              }
-            />
-          ),
-        }),
-      ]}
-    />
+          getInstanceConfigurationRow({
+            formik,
+            label: "Schedule",
+            name: "snapshots_schedule",
+            defaultValue: "",
+            children: (
+              <SnapshotScheduleInput
+                value={formik.values.snapshots_schedule}
+                setValue={(val) =>
+                  void formik.setFieldValue("snapshots_schedule", val)
+                }
+              />
+            ),
+          }),
+        ]}
+      />
+    </>
   );
 };
 
