@@ -43,6 +43,9 @@ jobs:
           - name: Unzip artifact and cleanup
             run: |
                 unzip playwright-report.zip
+                echo "---Folder structure---"
+                ls -a .
+                echo "---Folder structure---"
                 PR_NUMBER=$(grep "PR_NUMBER:" playwright-report/info.txt | sed 's/PR_NUMBER://g')
                 RUN_ID=$(grep "RUN_ID:" playwright-report/info.txt | sed 's/RUN_ID://g')
                 RUN_ATTEMPT=$(grep "RUN_ATTEMPT:" playwright-report/info.txt | sed 's/RUN_ATTEMPT://g')
