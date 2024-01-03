@@ -14,7 +14,7 @@ jobs:
             with:
               ref: gh-pages
               token: ${{ secrets.GITHUB_TOKEN }}
-          - name: Dlownload test report artifact
+          - name: Download test report artifact
             uses: actions/github-script@v6
             with:
                 script: |
@@ -34,36 +34,21 @@ jobs:
                     });
                     let fs = require('fs');
                     fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/playwright-report.zip`, Buffer.from(download.data));
-          - name: Check directory content
-            run: |
-                echo "Repo structure"
-                ls -a .
-                echo "Reports structure"
-                ls -a reports/
           - name: Unzip artifact and cleanup
             run: |
                 mkdir tmp
                 unzip playwright-report.zip -d tmp
-                PR_NUMBER=$(grep "PR_NUMBER:" tmp/info.txt | sed 's/PR_NUMBER://g')
-                RUN_ID=$(grep "RUN_ID:" tmp/info.txt | sed 's/RUN_ID://g')
-                RUN_ATTEMPT=$(grep "RUN_ATTEMPT:" tmp/info.txt | sed 's/RUN_ATTEMPT://g')
-                HTML_REPORT_URL_PATH=reports/pr-$PR_NUMBER/$RUN_ID/$RUN_ATTEMPT
-                echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
-                echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
-                echo "RUN_ATTEMPT=$RUN_ATTEMPT" >> "$GITHUB_ENV"
+                HTML_REPORT_URL_PATH=$(grep "HTML_REPORT_URL_PATH:" tmp/info.txt | sed 's/HTML_REPORT_URL_PATH://g')
                 echo "HTML_REPORT_URL_PATH=$HTML_REPORT_URL_PATH" >> "$GITHUB_ENV"
+                echo "PR_NUMBER=$(echo "$HTML_REPORT_URL_PATH" | cut -d '/' -f 2 | cut -d '-' -f 2)" >> "$GITHUB_ENV"
+                echo "RUN_ID=$(echo "$HTML_REPORT_URL_PATH" | cut -d '/' -f 3)" >> "$GITHUB_ENV"
+                echo "RUN_ATTEMPT=$(echo "$HTML_REPORT_URL_PATH" | cut -d '/' -f 4)" >> "$GITHUB_ENV"
                 mkdir -p $HTML_REPORT_URL_PATH
                 mv -f tmp/* $HTML_REPORT_URL_PATH
                 rm -rf playwright-report.zip
                 rm -rf tmp
           # user git configs are needed for git commands to work
           # actual authentication is done using secrets.GITHUB_TOKEN with write permission
-          - name: Check directory content
-            run: |
-                echo "Repo structure"
-                ls -a reports/
-                echo "Report folder structure"
-                ls -a $HTML_REPORT_URL_PATH
           - name: Set Git User
             run: |
               git config --global user.email "github-action@example.com"
