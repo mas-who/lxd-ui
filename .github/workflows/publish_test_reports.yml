@@ -1,0 +1,87 @@
+name: Publish playwright test reports
+on:
+    workflow_run:
+        workflows: [PR checks]
+        types: [completed]
+
+jobs:
+    publish_report:
+        name: publish-e2e-report
+        runs-on: ubuntu-latest
+        continue-on-error: true
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              ref: gh-pages
+              token: ${{ secrets.GITHUB_TOKEN }}
+          - name: Dlownload test report artifact
+            uses: actions/github-script@v6
+            with:
+                script: |
+                    let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        run_id: context.payload.workflow_run.id,
+                    });
+                    let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+                        return artifact.name == "playwright-report"
+                    })[0];
+                    let download = await github.rest.actions.downloadArtifact({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        artifact_id: matchArtifact.id,
+                        archive_format: 'zip',
+                    });
+                    let fs = require('fs');
+                    fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/playwright-report.zip`, Buffer.from(download.data));
+          - name: Unzip artifact and cleanup
+            run: |
+                unzip playwright-report.zip
+                PR_NUMBER=$(grep "PR_NUMBER:" playwright-report/info.txt | sed 's/PR_NUMBER://g')
+                RUN_ID=$(grep "RUN_ID:" playwright-report/info.txt | sed 's/RUN_ID://g')
+                RUN_ATTEMPT=$(grep "RUN_ATTEMPT:" playwright-report/info.txt | sed 's/RUN_ATTEMPT://g')
+                HTML_REPORT_URL_PATH=reports/pr-$PR_NUMBER/$RUN_ID/$RUN_ATTEMPT
+                echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
+                echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
+                echo "RUN_ATTEMPT=$RUN_ATTEMPT" >> "$GITHUB_ENV"
+                echo "HTML_REPORT_URL_PATH=$HTML_REPORT_URL_PATH" >> "$GITHUB_ENV"
+                mkdir -p $HTML_REPORT_URL_PATH
+                mv -f playwright-report/* $HTML_REPORT_URL_PATH
+                rm -rf playwright-report.zip
+                rm -rf playwright-report
+          # user git configs are needed for git commands to work
+          # actual authentication is done using secrets.GITHUB_TOKEN with write permission
+          - name: Check directory content
+            run: |
+                echo "Repo structure"
+                ls -a reports/
+                echo "Report folder structure"
+                ls -a $HTML_REPORT_URL_PATH
+          - name: Set Git User
+            run: |
+              git config --global user.email "github-action@example.com"
+              git config --global user.name "GitHub Action"
+          - name: Push HTML Report
+            timeout-minutes: 3
+            run: |
+              git add .
+              git commit -m "workflow: add HTML report for PR #$PR_NUMBER (run_id: $RUN_ID, attempt:  $RUN_ATTEMPT)"
+              
+              # In case if another action job pushed to gh-pages while we are rebasing for the current job
+              while true; do
+                git pull --rebase
+                if [ $? -ne 0 ]; then
+                  echo "Failed to rebase. Please review manually."
+                  exit 1
+                fi
+    
+                git push
+                if [ $? -eq 0 ]; then
+                  echo "Successfully pushed HTML report to repo."
+                  exit 0
+                fi
+              done
+          - name: Output Report URL as Worfklow Annotation
+            run: |
+              FULL_HTML_REPORT_URL=https://canonical.github.io/lxd-ui/$HTML_REPORT_URL_PATH
+              echo "::notice title=Published Playwright Test Report::$FULL_HTML_REPORT_URL"
