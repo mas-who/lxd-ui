@@ -42,22 +42,20 @@ jobs:
                 ls -a reports/
           - name: Unzip artifact and cleanup
             run: |
-                unzip playwright-report.zip
-                echo "---Folder structure---"
-                ls -a .
-                echo "---Folder structure---"
-                PR_NUMBER=$(grep "PR_NUMBER:" playwright-report/info.txt | sed 's/PR_NUMBER://g')
-                RUN_ID=$(grep "RUN_ID:" playwright-report/info.txt | sed 's/RUN_ID://g')
-                RUN_ATTEMPT=$(grep "RUN_ATTEMPT:" playwright-report/info.txt | sed 's/RUN_ATTEMPT://g')
+                mkdir tmp
+                unzip playwright-report.zip -d tmp
+                PR_NUMBER=$(grep "PR_NUMBER:" tmp/info.txt | sed 's/PR_NUMBER://g')
+                RUN_ID=$(grep "RUN_ID:" tmp/info.txt | sed 's/RUN_ID://g')
+                RUN_ATTEMPT=$(grep "RUN_ATTEMPT:" tmp/info.txt | sed 's/RUN_ATTEMPT://g')
                 HTML_REPORT_URL_PATH=reports/pr-$PR_NUMBER/$RUN_ID/$RUN_ATTEMPT
                 echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
                 echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
                 echo "RUN_ATTEMPT=$RUN_ATTEMPT" >> "$GITHUB_ENV"
                 echo "HTML_REPORT_URL_PATH=$HTML_REPORT_URL_PATH" >> "$GITHUB_ENV"
                 mkdir -p $HTML_REPORT_URL_PATH
-                mv -f playwright-report/* $HTML_REPORT_URL_PATH
+                mv -f tmp/* $HTML_REPORT_URL_PATH
                 rm -rf playwright-report.zip
-                rm -rf playwright-report
+                rm -rf tmp
           # user git configs are needed for git commands to work
           # actual authentication is done using secrets.GITHUB_TOKEN with write permission
           - name: Check directory content
