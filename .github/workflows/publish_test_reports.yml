@@ -34,6 +34,12 @@ jobs:
                     });
                     let fs = require('fs');
                     fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/playwright-report.zip`, Buffer.from(download.data));
+          - name: Check directory content
+            run: |
+                echo "Repo structure"
+                ls -a .
+                echo "Reports structure"
+                ls -a reports/
           - name: Unzip artifact and cleanup
             run: |
                 unzip playwright-report.zip
