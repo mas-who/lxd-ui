@@ -58,4 +58,5 @@ test("only user server setting available for lxd v5.0/stable", async ({
   await page.waitForSelector(`text=Get more server settings`);
   const allSettingRows = await page.locator("#settings-table tbody tr").all();
   expect(allSettingRows.length).toEqual(1);
+  expect(false).toEqual(true);
 });

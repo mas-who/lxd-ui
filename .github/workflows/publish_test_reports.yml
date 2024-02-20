@@ -39,6 +39,9 @@ jobs:
                 mkdir tmp
                 unzip playwright-report.zip -d tmp
 
+                ls tmp
+                ls tmp/trace
+
                 # Extract parent workflow info from info.txt in artifact
                 HTML_REPORT_URL_PATH=$(grep "HTML_REPORT_URL_PATH:" tmp/info.txt | sed 's/HTML_REPORT_URL_PATH://g')
                 echo "HTML_REPORT_URL_PATH=$HTML_REPORT_URL_PATH" >> "$GITHUB_ENV"
