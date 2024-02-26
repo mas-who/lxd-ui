@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">20.51% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/120</span>
+                <span class='fraction'>24/117</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.42% </span>
+                <span class="strong">21.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/112</span>
+                <span class='fraction'>24/110</span>
             </div>
         
             
@@ -173,30 +173,28 @@
 <a name='L108'></a><a href='#L108'>108</a>
 <a name='L109'></a><a href='#L109'>109</a>
 <a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -283,12 +281,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, KeyboardEvent } from "react";
 import {
+  ActionButton,
   Button,
   Col,
   Form,
@@ -297,7 +294,6 @@ import {
   Row,
 } from "@canonical/react-components";
 import { getTomorrow } from "util/helpers";
-import SubmitButton from "components/SubmitButton";
 import { SnapshotFormValues } from "util/snapshots";
 import { FormikProps } from "formik/dist/types";
 &nbsp;
@@ -316,10 +312,6 @@ const SnapshotForm: FC&lt;Props&gt; = <span class="cstat-no" title="statement no
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const submitForm = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    void formik.submitForm();</span></span>
-<span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return (</span></span>
 <span class="cstat-no" title="statement not covered" >    &lt;Modal</span>
 <span class="cstat-no" title="statement not covered" >      className="snapshot-creation-modal"</span>
@@ -335,12 +327,14 @@ const SnapshotForm: FC&lt;Props&gt; = <span class="cstat-no" title="statement no
 <span class="cstat-no" title="statement not covered" >          &gt;</span>
 <span class="cstat-no" title="statement not covered" >            Cancel</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;SubmitButton</span>
-<span class="cstat-no" title="statement not covered" >            isSubmitting={formik.isSubmitting}</span>
-<span class="cstat-no" title="statement not covered" >            isDisabled={!formik.isValid}</span>
-<span class="cstat-no" title="statement not covered" >            buttonLabel={isEdit ? "Save" : "Create"}</span>
-<span class="cstat-no" title="statement not covered" >            onClick={submitForm}</span>
-<span class="cstat-no" title="statement not covered" >          /&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;ActionButton</span>
+<span class="cstat-no" title="statement not covered" >            appearance="positive"</span>
+<span class="cstat-no" title="statement not covered" >            loading={formik.isSubmitting}</span>
+<span class="cstat-no" title="statement not covered" >            disabled={!formik.isValid}</span>
+<span class="cstat-no" title="statement not covered" >            onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >v</span>oid formik.submitForm()}</span></span>
+<span class="cstat-no" title="statement not covered" >          &gt;</span>
+<span class="cstat-no" title="statement not covered" >            {isEdit ? "Save" : "Create"}</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/ActionButton&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/&gt;</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" >      onKeyDown={handleEscKey}</span>
@@ -406,7 +400,7 @@ export default SnapshotForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-23T14:34:27.281Z
+                at 2024-02-26T13:42:56.307Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
