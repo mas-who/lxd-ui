@@ -333,29 +333,29 @@
 <a name='L268'></a><a href='#L268'>268</a>
 <a name='L269'></a><a href='#L269'>269</a>
 <a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
+<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -601,8 +601,8 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">77x</span>
-<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC } from "react";
 import OpenTerminalBtn from "./actions/OpenTerminalBtn";
 import OpenConsoleBtn from "./actions/OpenConsoleBtn";
@@ -749,7 +749,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
               &lt;th&gt;
                 &lt;h3 className="p-muted-heading p-heading--5"&gt;
                   &lt;Link
-                    to={`/ui/project/${instance.project}/instances/detail/${instance.name}/configuration`}
+                    to={`/ui/project/${instance.project}/instance/${instance.name}/configuration`}
                   &gt;
                     Profiles
                   &lt;/Link&gt;
@@ -761,7 +761,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
                   items={instance.profiles.map(<span class="fstat-no" title="function not covered" >(n</span>ame) =&gt; (
 <span class="cstat-no" title="statement not covered" >                    &lt;Link</span>
                       key={name}
-                      to={`/ui/project/${instance.project}/profiles/detail/${name}`}
+                      to={`/ui/project/${instance.project}/profile/${name}`}
                     &gt;
                       {name}
                     &lt;/Link&gt;
@@ -780,7 +780,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
                     items={networkDevices.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (
 <span class="cstat-no" title="statement not covered" >                      &lt;Link</span>
                         key={item.network}
-                        to={`/ui/project/${instance.project}/networks/detail/${item.network}`}
+                        to={`/ui/project/${instance.project}/network/${item.network}`}
                       &gt;
                         {item.network}
                       &lt;/Link&gt;
@@ -796,7 +796,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
 <span class="cstat-no" title="statement not covered" >                    No networks found.</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;br /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;Link</span>
-<span class="cstat-no" title="statement not covered" >                      to={`/ui/project/${instance.project}/instances/detail/${instance.name}/configuration/networks`}</span>
+<span class="cstat-no" title="statement not covered" >                      to={`/ui/project/${instance.project}/instance/${instance.name}/configuration/networks`}</span>
 <span class="cstat-no" title="statement not covered" >                    &gt;</span>
 <span class="cstat-no" title="statement not covered" >                      Configure instance networks</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;/Link&gt;</span>
@@ -808,7 +808,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
               &lt;th colSpan={2} className="snapshots-header"&gt;
                 &lt;h3 className="p-muted-heading p-heading--5"&gt;
                   &lt;Link
-                    to={`/ui/project/${instance.project}/instances/detail/${instance.name}/snapshots`}
+                    to={`/ui/project/${instance.project}/instance/${instance.name}/snapshots`}
                   &gt;
                     Snapshots
                   &lt;/Link&gt;
@@ -842,7 +842,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
 <span class="cstat-no" title="statement not covered" >                  &lt;tr&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;td colSpan={2}&gt;</span>
 <span class="cstat-no" title="statement not covered" >                      &lt;Link</span>
-<span class="cstat-no" title="statement not covered" >                        to={`/ui/project/${instance.project}/instances/detail/${instance.name}/snapshots`}</span>
+<span class="cstat-no" title="statement not covered" >                        to={`/ui/project/${instance.project}/instance/${instance.name}/snapshots`}</span>
 <span class="cstat-no" title="statement not covered" >                      &gt;</span>
 <span class="cstat-no" title="statement not covered" >                        {`View all (${instance.snapshots.length})`}</span>
 <span class="cstat-no" title="statement not covered" >                      &lt;/Link&gt;</span>
@@ -857,7 +857,7 @@ const InstanceDetailPanel: FC = <span class="cstat-no" title="statement not cove
                     No snapshots found.
                     &lt;br /&gt;
                     &lt;Link
-                      to={`/ui/project/${instance.project}/instances/detail/${instance.name}/snapshots`}
+                      to={`/ui/project/${instance.project}/instance/${instance.name}/snapshots`}
                     &gt;
                       Manage instance snapshots
                     &lt;/Link&gt;
@@ -880,7 +880,7 @@ export default InstanceDetailPanel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-27T09:08:45.649Z
+                at 2024-03-01T08:49:14.277Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
