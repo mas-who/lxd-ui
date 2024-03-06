@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.61% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>138/149</span>
+                <span class='fraction'>144/156</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.28% </span>
+                <span class="strong">99.31% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>138/139</span>
+                <span class='fraction'>144/145</span>
             </div>
         
             
@@ -202,7 +202,13 @@
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">24x</span>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -243,6 +249,13 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -298,8 +311,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -382,7 +394,10 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
   ];
 &nbsp;
   const rows = <span class="cstat-no" title="statement not covered" >images.map((image) =&gt; {</span>
+    const selectIso = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >o</span>nSelect(image, "virtual-machine");</span></span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    return {</span>
+      className: "u-row",
       columns: [
         {
           content: (
@@ -392,16 +407,19 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
           ),
           role: "cell",
           "aria-label": "Name",
+          onClick: selectIso,
         },
         {
           content: image.pool,
           role: "cell",
           "aria-label": "Storage pool",
+          onClick: selectIso,
         },
         {
           content: isoTimeToString(new Date(image.created_at).toISOString()),
           role: "cell",
           "aria-label": "Uploaded at",
+          onClick: selectIso,
         },
         {
           content:
@@ -409,6 +427,7 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
             humanFileSize(+image.volume.config.size),
           role: "cell",
           "aria-label": "Size",
+          onClick: selectIso,
         },
         {
           content: (
@@ -419,7 +438,7 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
                   ? <span class="branch-0 cbranch-no" title="branch not covered" >"positive"</span>
 <span class="cstat-no" title="statement not covered" >                  : ""</span>
               }
-              onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >o</span>nSelect(image, "virtual-machine")}</span>
+              onClick={selectIso}
               dense
             &gt;
               Select
@@ -428,6 +447,7 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
           role: "cell",
           "aria-label": "Actions",
           className: "u-align--right",
+          onClick: selectIso,
         },
       ],
       sortData: {
@@ -445,10 +465,8 @@ const CustomIsoSelector: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
         &lt;MainTable
           headers={headers}
           rows={rows}
-          paginate={30}
-          responsive
           sortable
-          className="u-table-layout--auto"
+          className="table-iso-select u-table-layout--auto"
           emptyStateMsg={
             isLoading ? (
               &lt;Loader text="Loading images..." /&gt;
@@ -487,7 +505,7 @@ export default CustomIsoSelector;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-01T08:49:14.277Z
+                at 2024-03-06T07:38:38.701Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
