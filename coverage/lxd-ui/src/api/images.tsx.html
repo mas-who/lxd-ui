@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.34% </span>
+                <span class="strong">22.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/115</span>
+                <span class='fraction'>28/122</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.63% </span>
+                <span class="strong">13.04% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/22</span>
+                <span class='fraction'>3/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.67% </span>
+                <span class="strong">28.12% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/91</span>
+                <span class='fraction'>27/96</span>
             </div>
         
             
@@ -154,7 +154,12 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
@@ -201,6 +206,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -301,14 +311,19 @@ export const deleteImageBulk = <span class="cstat-no" title="statement not cover
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    void Promise.allSettled(</span></span>
 <span class="cstat-no" title="statement not covered" >      fingerprints.map(<span class="fstat-no" title="function not covered" >(n</span>ame) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        const image = <span class="cstat-no" title="statement not covered" >{ fingerprint: name } as LxdImage;</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return deleteImage(image, project).then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          eventQueue.set(</span></span>
-<span class="cstat-no" title="statement not covered" >            operation.metadata.id,</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            () =&gt; <span class="cstat-no" title="statement not covered" >p</span>ushSuccess(results),</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            (m</span>sg) =&gt; <span class="cstat-no" title="statement not covered" >pushFailure(results, msg),</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            () =&gt; <span class="cstat-no" title="statement not covered" >c</span>ontinueOrFinish(results, fingerprints.length, resolve),</span></span>
-<span class="cstat-no" title="statement not covered" >          );</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return deleteImage(image, project)</span></span>
+<span class="cstat-no" title="statement not covered" >          .then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            eventQueue.set(</span></span>
+<span class="cstat-no" title="statement not covered" >              operation.metadata.id,</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >p</span>ushSuccess(results),</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              (m</span>sg) =&gt; <span class="cstat-no" title="statement not covered" >pushFailure(results, msg),</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >c</span>ontinueOrFinish(results, fingerprints.length, resolve),</span></span>
+<span class="cstat-no" title="statement not covered" >            );</span>
+<span class="cstat-no" title="statement not covered" >          })</span>
+<span class="cstat-no" title="statement not covered" >          .catch(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            pushFailure(results, e instanceof Error ? e.message : <span class="branch-1 cbranch-no" title="branch not covered" >"")</span>;</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            continueOrFinish(results, fingerprints.length, resolve);</span></span>
+<span class="cstat-no" title="statement not covered" >          });</span>
 <span class="cstat-no" title="statement not covered" >      }),</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
@@ -343,7 +358,7 @@ export const importImage = <span class="cstat-no" title="statement not covered" 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-06T07:38:38.701Z
+                at 2024-03-06T09:05:51.675Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.66% </span>
+                <span class="strong">75.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>94/118</span>
+                <span class='fraction'>103/137</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">15.62% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/20</span>
+                <span class='fraction'>5/32</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.26% </span>
+                <span class="strong">86.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>94/103</span>
+                <span class='fraction'>103/119</span>
             </div>
         
             
@@ -166,7 +166,23 @@
 <a name='L101'></a><a href='#L101'>101</a>
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -205,6 +221,12 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -221,6 +243,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -258,6 +287,9 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -276,14 +308,16 @@ import StoragePoolFormMain from "./StoragePoolFormMain";
 import StoragePoolFormMenu, {
   CEPH_CONFIGURATION,
   MAIN_CONFIGURATION,
+  ZFS_CONFIGURATION,
 } from "./StoragePoolFormMenu";
 import useEventListener from "@use-it/event-listener";
 import { updateMaxHeight } from "util/updateMaxHeight";
 import { LxdStoragePool } from "types/storage";
-import { btrfsDriver, cephDriver } from "util/storageOptions";
+import { btrfsDriver, cephDriver, zfsDriver } from "util/storageOptions";
 import { getPoolKey } from "util/storagePool";
 import StoragePoolFormCeph from "./StoragePoolFormCeph";
 import { slugify } from "util/slugify";
+import StoragePoolFormZFS from "./StoragePoolFormZFS";
 &nbsp;
 export interface StoragePoolFormValues {
   isCreating: boolean;
@@ -299,6 +333,9 @@ export interface StoragePoolFormValues {
   ceph_rbd_clone_copy?: string;
   ceph_user_name?: string;
   ceph_rbd_features?: string;
+  zfs_clone_copy?: string;
+  zfs_export?: string;
+  zfs_pool_name?: string;
 }
 &nbsp;
 interface Props {
@@ -311,6 +348,7 @@ export const storagePoolFormToPayload = <span class="cstat-no" title="statement 
   values: StoragePoolFormValues,
 ): LxdStoragePool =&gt; {
   const isCephDriver = <span class="cstat-no" title="statement not covered" >values.driver === cephDriver;</span>
+  const isZFSDriver = <span class="cstat-no" title="statement not covered" >values.driver === zfsDriver;</span>
   const hasValidSize = <span class="cstat-no" title="statement not covered" >values.size?.match(/^\d/);</span>
 &nbsp;
   const getConfig = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
@@ -322,6 +360,13 @@ export const storagePoolFormToPayload = <span class="cstat-no" title="statement 
 <span class="cstat-no" title="statement not covered" >        [getPoolKey("ceph_user_name")]: values.ceph_user_name,</span>
 <span class="cstat-no" title="statement not covered" >        [getPoolKey("ceph_rbd_features")]: values.ceph_rbd_features,</span>
 <span class="cstat-no" title="statement not covered" >        source: values.source,</span>
+<span class="cstat-no" title="statement not covered" >      };</span>
+<span class="cstat-no" title="statement not covered" >    } else if (isZFSDriver) <span class="branch-0 cbranch-no" title="branch not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      return {</span></span>
+<span class="cstat-no" title="statement not covered" >        [getPoolKey("zfs_clone_copy")]: values.zfs_clone_copy ?? "",</span>
+<span class="cstat-no" title="statement not covered" >        [getPoolKey("zfs_export")]: values.zfs_export ?? "",</span>
+<span class="cstat-no" title="statement not covered" >        [getPoolKey("zfs_pool_name")]: values.zfs_pool_name,</span>
+<span class="cstat-no" title="statement not covered" >        size: hasValidSize ? values.size : undefined,</span>
 <span class="cstat-no" title="statement not covered" >      };</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      return {</span>
@@ -365,6 +410,9 @@ const StoragePoolForm: FC&lt;Props&gt; = <span class="cstat-no" title="statement
           {section === slugify(CEPH_CONFIGURATION<span class="branch-0 cbranch-no" title="branch not covered" >) &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >            &lt;StoragePoolFormCeph formik={formik} /&gt;</span>
           )}
+          {section === slugify(ZFS_CONFIGURATION<span class="branch-0 cbranch-no" title="branch not covered" >) &amp;&amp; (</span>
+<span class="cstat-no" title="statement not covered" >            &lt;StoragePoolFormZFS formik={formik} /&gt;</span>
+          )}
         &lt;/Col&gt;
       &lt;/Row&gt;
     &lt;/Form&gt;
@@ -379,7 +427,7 @@ export default StoragePoolForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-06T07:38:38.701Z
+                at 2024-03-06T09:05:51.675Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

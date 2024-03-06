@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.79% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>190/406</span>
+                <span class='fraction'>190/418</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.2% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>25/29</span>
+                <span class='fraction'>27/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">26.58% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>21/77</span>
+                <span class='fraction'>21/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.18% </span>
+                <span class="strong">55.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>187/327</span>
+                <span class='fraction'>187/335</span>
             </div>
         
             
@@ -390,7 +390,15 @@
 <a name='L325'></a><a href='#L325'>325</a>
 <a name='L326'></a><a href='#L326'>326</a>
 <a name='L327'></a><a href='#L327'>327</a>
-<a name='L328'></a><a href='#L328'>328</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">82x</span>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
@@ -418,13 +426,13 @@
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -577,6 +585,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -592,6 +603,11 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -890,16 +906,19 @@ export const updateInstanceBulkAction = <span class="cstat-no" title="statement 
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    void Promise.allSettled(</span></span>
 <span class="cstat-no" title="statement not covered" >      actions.map(<span class="fstat-no" title="function not covered" >async ({</span> name, project, action }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return await putInstanceAction(name, project, action, isForce).then(</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >          (o</span>peration) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return await putInstanceAction(name, project, action, isForce)</span></span>
+<span class="cstat-no" title="statement not covered" >          .then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            eventQueue.set(</span></span>
 <span class="cstat-no" title="statement not covered" >              operation.metadata.id,</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >p</span>ushSuccess(results),</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              (m</span>sg) =&gt; <span class="cstat-no" title="statement not covered" >pushFailure(results, msg),</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >c</span>ontinueOrFinish(results, actions.length, resolve),</span></span>
 <span class="cstat-no" title="statement not covered" >            );</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
-<span class="cstat-no" title="statement not covered" >        );</span>
+<span class="cstat-no" title="statement not covered" >          })</span>
+<span class="cstat-no" title="statement not covered" >          .catch(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            pushFailure(results, e instanceof Error ? e.message : <span class="branch-1 cbranch-no" title="branch not covered" >"")</span>;</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            continueOrFinish(results, actions.length, resolve);</span></span>
+<span class="cstat-no" title="statement not covered" >          });</span>
 <span class="cstat-no" title="statement not covered" >      }),</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
@@ -926,14 +945,19 @@ export const deleteInstanceBulk = <span class="cstat-no" title="statement not co
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    void Promise.allSettled(</span></span>
 <span class="cstat-no" title="statement not covered" >      instances.map(<span class="fstat-no" title="function not covered" >async (i</span>nstance) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return await deleteInstance(instance).then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          eventQueue.set(</span></span>
-<span class="cstat-no" title="statement not covered" >            operation.metadata.id,</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            () =&gt; <span class="cstat-no" title="statement not covered" >p</span>ushSuccess(results),</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            (m</span>sg) =&gt; <span class="cstat-no" title="statement not covered" >pushFailure(results, msg),</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            () =&gt; <span class="cstat-no" title="statement not covered" >c</span>ontinueOrFinish(results, instances.length, resolve),</span></span>
-<span class="cstat-no" title="statement not covered" >          );</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return await deleteInstance(instance)</span></span>
+<span class="cstat-no" title="statement not covered" >          .then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            eventQueue.set(</span></span>
+<span class="cstat-no" title="statement not covered" >              operation.metadata.id,</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >p</span>ushSuccess(results),</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              (m</span>sg) =&gt; <span class="cstat-no" title="statement not covered" >pushFailure(results, msg),</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >              () =&gt; <span class="cstat-no" title="statement not covered" >c</span>ontinueOrFinish(results, instances.length, resolve),</span></span>
+<span class="cstat-no" title="statement not covered" >            );</span>
+<span class="cstat-no" title="statement not covered" >          })</span>
+<span class="cstat-no" title="statement not covered" >          .catch(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            pushFailure(results, e instanceof Error ? e.message : <span class="branch-1 cbranch-no" title="branch not covered" >"")</span>;</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            continueOrFinish(results, instances.length, resolve);</span></span>
+<span class="cstat-no" title="statement not covered" >          });</span>
 <span class="cstat-no" title="statement not covered" >      }),</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
@@ -1051,7 +1075,7 @@ export const fetchInstanceLogFile = <span class="cstat-no" title="statement not 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-06T07:38:38.701Z
+                at 2024-03-06T09:05:51.675Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">75.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>51/68</span>
+                <span class='fraction'>60/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>6/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.72% </span>
+                <span class="strong">93.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/55</span>
+                <span class='fraction'>60/64</span>
             </div>
         
             
@@ -118,7 +118,16 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -137,6 +146,8 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -167,6 +178,13 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -180,10 +198,11 @@ import { updateMaxHeight } from "util/updateMaxHeight";
 import useEventListener from "@use-it/event-listener";
 import { FormikProps } from "formik";
 import { StoragePoolFormValues } from "./StoragePoolForm";
-import { cephDriver } from "util/storageOptions";
+import { cephDriver, zfsDriver } from "util/storageOptions";
 &nbsp;
 export const MAIN_CONFIGURATION = <span class="cstat-no" title="statement not covered" >"Main configuration";</span>
 export const CEPH_CONFIGURATION = <span class="cstat-no" title="statement not covered" >"Ceph";</span>
+export const ZFS_CONFIGURATION = <span class="cstat-no" title="statement not covered" >"ZFS";</span>
 &nbsp;
 interface Props {
   active: string;
@@ -199,6 +218,7 @@ const StoragePoolFormMenu: FC&lt;Props&gt; = <span class="cstat-no" title="state
   };
 &nbsp;
   const isCephDriver = <span class="cstat-no" title="statement not covered" >formik.values.driver === cephDriver;</span>
+  const isZfsDriver = <span class="cstat-no" title="statement not covered" >formik.values.driver === zfsDriver;</span>
   const hasName = <span class="cstat-no" title="statement not covered" >formik.values.name.length &gt; 0;</span>
   const disableReason = <span class="cstat-no" title="statement not covered" >hasName</span>
     ? undefined
@@ -221,6 +241,13 @@ const StoragePoolFormMenu: FC&lt;Props&gt; = <span class="cstat-no" title="state
 <span class="cstat-no" title="statement not covered" >              disableReason={disableReason}</span>
             /&gt;
           )}
+          {isZfsDriver &amp;&amp; (
+            &lt;MenuItem
+              label={ZFS_CONFIGURATION}
+              {...menuItemProps}
+              disableReason={disableReason}
+            /&gt;
+          )}
         &lt;/ul&gt;
       &lt;/nav&gt;
     &lt;/div&gt;
@@ -235,7 +262,7 @@ export default StoragePoolFormMenu;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-06T07:38:38.701Z
+                at 2024-03-06T09:05:51.675Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
