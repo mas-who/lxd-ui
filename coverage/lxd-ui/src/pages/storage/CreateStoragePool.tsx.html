@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.29% </span>
+                <span class="strong">76.31% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>103/135</span>
+                <span class='fraction'>116/152</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.66% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/15</span>
+                <span class='fraction'>8/20</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.37% </span>
+                <span class="strong">93.54% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>103/108</span>
+                <span class='fraction'>116/124</span>
             </div>
         
             
@@ -171,7 +171,28 @@
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -227,6 +248,9 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -248,6 +272,8 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -268,6 +294,12 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -290,16 +322,21 @@ import * as Yup from "yup";
 import { useNavigate, useParams } from "react-router-dom";
 import { queryKeys } from "util/queryKeys";
 import { zfsDriver } from "util/storageOptions";
-import { testDuplicateStoragePoolName } from "util/storagePool";
+import {
+  isPowerflexIncomplete,
+  testDuplicateStoragePoolName,
+} from "util/storagePool";
 import StoragePoolForm, {
   StoragePoolFormValues,
-  storagePoolFormToPayload,
+  toStoragePool,
 } from "./forms/StoragePoolForm";
 import { useClusterMembers } from "context/useClusterMembers";
 import FormFooterLayout from "components/forms/FormFooterLayout";
 import { slugify } from "util/slugify";
 import { MAIN_CONFIGURATION } from "./forms/StoragePoolFormMenu";
 import { useToastNotification } from "context/toastNotificationProvider";
+import { yamlToObject } from "util/yaml";
+import { LxdStoragePool } from "types/storage";
 &nbsp;
 const CreateStoragePool: FC = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
   const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
@@ -334,7 +371,10 @@ const CreateStoragePool: FC = <span class="cstat-no" title="statement not covere
     },
     validationSchema: CreateStoragePoolSchema,
     onSubmit: <span class="fstat-no" title="function not covered" >(v</span>alues) =&gt; {
-      const storagePool = <span class="cstat-no" title="statement not covered" >storagePoolFormToPayload(values);</span>
+      const storagePool = <span class="cstat-no" title="statement not covered" >values.<span class="branch-0 cbranch-no" title="branch not covered" >yaml</span></span>
+<span class="cstat-no" title="statement not covered" >        ? (yamlToObject(values.yaml) as LxdStoragePool)</span>
+        : toStoragePool(values);
+&nbsp;
       const mutation =
 <span class="cstat-no" title="statement not covered" >        clusterMembers.length &gt; 0</span>
           ? <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >c</span>reateClusteredPool(storagePool, project, clusterMembers<span class="branch-0 cbranch-no" title="branch not covered" >)</span></span>
@@ -355,6 +395,10 @@ const CreateStoragePool: FC = <span class="cstat-no" title="statement not covere
     },
   });
 &nbsp;
+  const updateSection = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >(n</span>ewSection: string) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    setSection(slugify(newSection));</span></span>
+<span class="cstat-no" title="statement not covered" >  };</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;BaseLayout
       title="Create a storage pool"
@@ -364,7 +408,7 @@ const CreateStoragePool: FC = <span class="cstat-no" title="statement not covere
       &lt;StoragePoolForm
         formik={formik}
         section={section}
-        setSection={<span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >(n</span>ewSection) =&gt; <span class="cstat-no" title="statement not covered" >setSection(slugify(newSection))}</span></span>
+        setSection={updateSection}
       /&gt;
       &lt;FormFooterLayout&gt;
         &lt;Button
@@ -376,7 +420,11 @@ const CreateStoragePool: FC = <span class="cstat-no" title="statement not covere
         &lt;ActionButton
           appearance="positive"
           loading={formik.isSubmitting}
-          disabled={!formik.isValid || !formik.values.name}
+          disabled={
+            !formik.isValid ||
+            !formik.values.name ||
+            isPowerflexIncomplete(formik)
+          }
           onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >v</span>oid formik.submitForm()}</span>
         &gt;
           Create
@@ -394,7 +442,7 @@ export default CreateStoragePool;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-06T09:05:51.675Z
+                at 2024-03-11T13:54:37.557Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
