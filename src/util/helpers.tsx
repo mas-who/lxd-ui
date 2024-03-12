@@ -265,3 +265,15 @@ export const getAbsoluteHeightBelow = (belowId: string): number => {
 export const generateUUID = (): string => {
   return crypto.randomBytes(16).toString("hex");
 };
+
+export const getClientOS = (userAgent: string) => {
+  if (userAgent.includes("Windows")) {
+    return "windows";
+  } else if (userAgent.includes("Mac OS")) {
+    return "macos";
+  } else if (userAgent.includes("Linux")) {
+    return "linux";
+  }
+
+  return null;
+};

@@ -9,12 +9,14 @@ export interface PanelHelper {
   openInstanceSummary: (instance: string, project: string) => void;
   openImageImport: () => void;
   openProfileSummary: (profile: string, project: string) => void;
+  openIdentityGroups: () => void;
 }
 
 export const panels = {
   instanceSummary: "instance-summary",
   imageImport: "image-import",
   profileSummary: "profile-summary",
+  identityGroups: "identity-groups",
 };
 
 type ParamMap = Record<string, string>;
@@ -61,6 +63,10 @@ const usePanelParams = (): PanelHelper => {
 
     openProfileSummary: (profile, project) => {
       setPanelParams(panels.profileSummary, { profile, project });
+    },
+
+    openIdentityGroups: () => {
+      setPanelParams(panels.identityGroups);
     },
   };
 };
