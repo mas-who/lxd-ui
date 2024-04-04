@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
@@ -140,11 +140,7 @@
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,6 +161,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,8 +178,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,15 +187,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,6 +237,8 @@ const DeleteImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statement 
   const [isLoading, setLoading] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
   const queryClient = <span class="cstat-no" title="statement not covered" >useQueryClient();</span>
 &nbsp;
+  const description = <span class="cstat-no" title="statement not covered" >image.properties?.description ?? image.fingerprint;</span>
+&nbsp;
   const handleDelete = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
 <span class="cstat-no" title="statement not covered" >    void deleteImage(image, project)</span>
@@ -258,23 +252,18 @@ const DeleteImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statement 
 <span class="cstat-no" title="statement not covered" >            void queryClient.invalidateQueries({</span>
               queryKey: [queryKeys.projects, project],
             });
-<span class="cstat-no" title="statement not covered" >            toastNotify.success(</span>
-              `Image ${image.properties.description} deleted.`,
-            );
+<span class="cstat-no" title="statement not covered" >            toastNotify.success(`Image ${description} deleted.`);</span>
           },
 <span class="fstat-no" title="function not covered" >          (m</span>sg) =&gt;
 <span class="cstat-no" title="statement not covered" >            toastNotify.failure(</span>
-              `Image ${image.properties.description} deletion failed`,
+              `Image ${description} deletion failed`,
               new Error(msg),
             ),
 <span class="fstat-no" title="function not covered" >          () =&gt; <span class="cstat-no" title="statement not covered" >s</span>etLoading(false),</span>
         ),
       )
       .catch(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
-<span class="cstat-no" title="statement not covered" >        toastNotify.failure(</span>
-          `Image ${image.properties.description} deletion failed`,
-          e,
-        );
+<span class="cstat-no" title="statement not covered" >        toastNotify.failure(`Image ${description} deletion failed`, e);</span>
 <span class="cstat-no" title="statement not covered" >        setLoading(false);</span>
       });
   };
@@ -286,8 +275,7 @@ const DeleteImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statement 
         title: "Confirm delete",
         children: (
           &lt;p&gt;
-            This will permanently delete image{" "}
-            &lt;b&gt;{image.properties.description}&lt;/b&gt;.&lt;br /&gt;
+            This will permanently delete image &lt;b&gt;{description}&lt;/b&gt;.&lt;br /&gt;
             This action cannot be undone, and can result in data loss.
           &lt;/p&gt;
         ),
@@ -313,7 +301,7 @@ export default DeleteImageBtn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-20T12:03:22.901Z
+                at 2024-04-04T14:11:20.859Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
