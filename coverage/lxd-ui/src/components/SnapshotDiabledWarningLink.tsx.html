@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">42.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>14/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">44.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>13/29</span>
             </div>
         
             
@@ -92,35 +92,35 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Icon } from "@canonical/react-components";
 import { useAuth } from "context/auth";
 import { FC } from "react";
@@ -131,23 +131,23 @@ interface Props {
   project?: LxdProject;
 }
 &nbsp;
-const SnapshotDiabledWarningLink: FC&lt;Props&gt; = <span class="fstat-no" title="function not covered" >({</span> project }) =&gt; {
-  const { isRestricted } = <span class="cstat-no" title="statement not covered" >useAuth();</span>
-&nbsp;
-  const snapshotDisabledWarningLink = <span class="cstat-no" title="statement not covered" >isRestricted ? (</span>
-    &lt;&gt;Please ask your project administrator to change this setting.&lt;/&gt;
-  ) : (
-    &lt;&gt;
-      You can change this setting in{" "}
-      &lt;Link to={`/ui/project/${project?.name}/configuration`}&gt;
-        project configuration
-        &lt;Icon className="external-link-icon" name="external-link" /&gt;
-      &lt;/Link&gt;
-    &lt;/&gt;
-  );
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return snapshotDisabledWarningLink;</span>
-};
+const SnapshotDiabledWarningLink: FC&lt;Props&gt; = <span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >({</span> project }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { isRestricted } = <span class="cstat-no" title="statement not covered" >useAuth();</span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const snapshotDisabledWarningLink = <span class="cstat-no" title="statement not covered" >isRestricted ? (</span></span>
+<span class="cstat-no" title="statement not covered" >    &lt;&gt;Please ask your project administrator to change this setting.&lt;/&gt;</span>
+<span class="cstat-no" title="statement not covered" >  ) : (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
+<span class="cstat-no" title="statement not covered" >      You can change this setting in{" "}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;Link to={`/ui/project/${project?.name}/configuration`}&gt;</span>
+<span class="cstat-no" title="statement not covered" >        project configuration</span>
+<span class="cstat-no" title="statement not covered" >        &lt;Icon className="external-link-icon" name="external-link" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/Link&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return snapshotDisabledWarningLink;</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 export default SnapshotDiabledWarningLink;
 &nbsp;</pre></td></tr></table></pre>
@@ -157,7 +157,7 @@ export default SnapshotDiabledWarningLink;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-04T14:16:00.395Z
+                at 2024-04-04T19:42:27.224Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

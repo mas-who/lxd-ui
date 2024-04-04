@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">45.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>16/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">61.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>16/26</span>
             </div>
         
             
@@ -89,32 +89,32 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { LxdOperationResponse } from "types/operation";
 import { getInstanceName } from "./operations";
 import InstanceLink from "pages/instances/InstanceLink";
@@ -126,21 +126,21 @@ export const instanceLinkFromName = <span class="cstat-no" title="statement not 
 }): ReactNode =&gt; {
   const { project, instanceName } = <span class="cstat-no" title="statement not covered" >args;</span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;InstanceLink instance={{ name: instanceName, project: project || "" }} /&gt;
+    &lt;InstanceLink instance={{ name: instanceName, project: project || <span class="branch-1 cbranch-no" title="branch not covered" >"" }</span>} /&gt;
   );
 };
 &nbsp;
-export const instanceLinkFromOperation = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>rgs: {</span>
-  operation?: LxdOperationResponse;
-  project?: string;
-}): ReactNode | undefined =&gt; {
-  const { operation, project } = <span class="cstat-no" title="statement not covered" >args;</span>
-  const linkText = <span class="cstat-no" title="statement not covered" >getInstanceName(operation?.metadata);</span>
-<span class="cstat-no" title="statement not covered" >  if (!linkText) {</span>
-<span class="cstat-no" title="statement not covered" >    return;</span>
-  }
-<span class="cstat-no" title="statement not covered" >  return &lt;InstanceLink instance={{ name: linkText, project: project || "" }} /&gt;;</span>
-};
+export const instanceLinkFromOperation = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >(a</span>rgs: {</span></span>
+<span class="cstat-no" title="statement not covered" >  operation?: LxdOperationResponse;</span>
+<span class="cstat-no" title="statement not covered" >  project?: string;</span>
+<span class="cstat-no" title="statement not covered" >}): ReactNode | undefined =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { operation, project } = <span class="cstat-no" title="statement not covered" >args;</span></span>
+<span class="cstat-no" title="statement not covered" >  const linkText = <span class="cstat-no" title="statement not covered" >getInstanceName(operation?.metadata);</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  if (!linkText) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    return;</span></span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return &lt;InstanceLink instance={{ name: linkText, project: project || <span class="branch-1 cbranch-no" title="branch not covered" >"" }</span>} /&gt;;</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -148,7 +148,7 @@ export const instanceLinkFromOperation = <span class="cstat-no" title="statement
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-04T14:16:00.395Z
+                at 2024-04-04T19:42:27.224Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
