@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>6/30</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">20.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/27</span>
+                <span class='fraction'>6/29</span>
             </div>
         
             
@@ -126,24 +126,32 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,7 +166,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -191,12 +199,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import forge from "node-forge";
 &nbsp;
-<span class="cstat-no" title="statement not covered" >self.onmessage = <span class="fstat-no" title="function not covered" >(e</span>vent: MessageEvent&lt;string&gt;) =&gt; {</span>
+self.onmessage = <span class="fstat-no" title="function not covered" >(e</span>vent: MessageEvent&lt;string&gt;) =&gt; {
   const result = <span class="cstat-no" title="statement not covered" >generateCert(event.data);</span>
 <span class="cstat-no" title="statement not covered" >  self.postMessage(result);</span>
 };
 &nbsp;
-const getRandomBytes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(n</span>: number) =&gt; {</span>
+const getRandomBytes = <span class="fstat-no" title="function not covered" >(n</span>: number) =&gt; {
   const crypto = <span class="cstat-no" title="statement not covered" >self.crypto;</span>
   const QUOTA = <span class="cstat-no" title="statement not covered" >65536;</span>
   const a = <span class="cstat-no" title="statement not covered" >new Uint8Array(n);</span>
@@ -206,7 +214,11 @@ const getRandomBytes = <span class="cstat-no" title="statement not covered" ><sp
 <span class="cstat-no" title="statement not covered" >  return a;</span>
 };
 &nbsp;
-const details = <span class="cstat-no" title="statement not covered" >[</span>
+export const sanitizeOrgName = (orgName: string) =&gt; {
+  return orgName.replace(/[^a-zA-Z0-9 '()+,-./:=?]/g, "");
+};
+&nbsp;
+const details = [
   {
     name: "countryName",
     value: "AU",
@@ -217,11 +229,11 @@ const details = <span class="cstat-no" title="statement not covered" >[</span>
   },
   {
     name: "organizationName",
-    value: `LXD UI ${location.hostname} (Browser Generated)`,
+    value: sanitizeOrgName(`LXD UI ${location.hostname} (Browser Generated)`),
   },
 ];
 &nbsp;
-const generateCert = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>assword: string) =&gt; {</span>
+const generateCert = <span class="fstat-no" title="function not covered" >(p</span>assword: string) =&gt; {
   const validDays = <span class="cstat-no" title="statement not covered" >1000;</span>
 &nbsp;
   const keys = <span class="cstat-no" title="statement not covered" >forge.pki.rsa.generateKeyPair(2048);</span>
@@ -259,7 +271,7 @@ const generateCert = <span class="cstat-no" title="statement not covered" ><span
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-12T14:00:21.914Z
+                at 2024-07-18T10:28:00.578Z
             </div>
         <script src="../../../../../../../prettify.js"></script>
         <script>
