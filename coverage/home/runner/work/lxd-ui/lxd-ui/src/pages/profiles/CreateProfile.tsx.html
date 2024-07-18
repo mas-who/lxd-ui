@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.77% </span>
+                <span class="strong">76.51% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>219/289</span>
+                <span class='fraction'>228/298</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.93% </span>
+                <span class="strong">36.06% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/58</span>
+                <span class='fraction'>22/61</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.25% </span>
+                <span class="strong">88.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>218/247</span>
+                <span class='fraction'>227/256</span>
             </div>
         
             
@@ -310,7 +310,22 @@
 <a name='L245'></a><a href='#L245'>245</a>
 <a name='L246'></a><a href='#L246'>246</a>
 <a name='L247'></a><a href='#L247'>247</a>
-<a name='L248'></a><a href='#L248'>248</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -443,6 +458,7 @@
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -503,6 +519,8 @@
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">68x</span>
@@ -598,6 +616,7 @@ import ProfileFormMenu, {
   CLOUD_INIT,
   DISK_DEVICES,
   MAIN_CONFIGURATION,
+  MIGRATION,
   RESOURCE_LIMITS,
   SECURITY_POLICIES,
   SNAPSHOTS,
@@ -618,12 +637,17 @@ import { hasDiskError, hasNetworkError } from "util/instanceValidation";
 import FormFooterLayout from "components/forms/FormFooterLayout";
 import { useToastNotification } from "context/toastNotificationProvider";
 import { useDocs } from "context/useDocs";
+import MigrationForm, {
+  MigrationFormValues,
+  migrationPayload,
+} from "components/forms/MigrationForm";
 &nbsp;
 export type CreateProfileFormValues = ProfileDetailsFormValues &amp;
   FormDeviceValues &amp;
   ResourceLimitsFormValues &amp;
   SecurityPoliciesFormValues &amp;
   SnapshotFormValues &amp;
+  MigrationFormValues &amp;
   CloudInitFormValues &amp;
   YamlFormValues;
 &nbsp;
@@ -697,6 +721,7 @@ const CreateProfile: FC = <span class="cstat-no" title="statement not covered" >
         ...resourceLimitsPayload(values),
         ...securityPoliciesPayload(values),
         ...snapshotsPayload(values),
+        ...migrationPayload(values),
         ...cloudInitPayload(values),
       },
     };
@@ -753,6 +778,8 @@ const CreateProfile: FC = <span class="cstat-no" title="statement not covered" >
             )}
 &nbsp;
             {section === <span class="branch-0 cbranch-no" title="branch not covered" >SNAPSHOTS &amp;&amp; &lt;InstanceSnapshotsForm formik={formik} /&gt;}</span>
+&nbsp;
+            {section === <span class="branch-0 cbranch-no" title="branch not covered" >MIGRATION &amp;&amp; &lt;MigrationForm formik={formik} /&gt;}</span>
 &nbsp;
             {section === <span class="branch-0 cbranch-no" title="branch not covered" >CLOUD_INIT &amp;&amp; &lt;CloudInitForm formik={formik} /&gt;}</span>
 &nbsp;
@@ -811,7 +838,7 @@ export default CreateProfile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-18T15:51:59.977Z
+                at 2024-07-18T17:37:21.552Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>

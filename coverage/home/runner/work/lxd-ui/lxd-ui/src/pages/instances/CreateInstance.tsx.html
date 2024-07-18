@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.42% </span>
+                <span class="strong">68.89% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>403/589</span>
+                <span class='fraction'>412/598</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.79% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>60/137</span>
+                <span class='fraction'>60/140</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.08% </span>
+                <span class="strong">86.34% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>402/467</span>
+                <span class='fraction'>411/476</span>
             </div>
         
             
@@ -530,7 +530,22 @@
 <a name='L465'></a><a href='#L465'>465</a>
 <a name='L466'></a><a href='#L466'>466</a>
 <a name='L467'></a><a href='#L467'>467</a>
-<a name='L468'></a><a href='#L468'>468</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<a name='L468'></a><a href='#L468'>468</a>
+<a name='L469'></a><a href='#L469'>469</a>
+<a name='L470'></a><a href='#L470'>470</a>
+<a name='L471'></a><a href='#L471'>471</a>
+<a name='L472'></a><a href='#L472'>472</a>
+<a name='L473'></a><a href='#L473'>473</a>
+<a name='L474'></a><a href='#L474'>474</a>
+<a name='L475'></a><a href='#L475'>475</a>
+<a name='L476'></a><a href='#L476'>476</a>
+<a name='L477'></a><a href='#L477'>477</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -867,6 +882,7 @@
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -933,6 +949,8 @@
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">82x</span>
+<span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
@@ -1050,6 +1068,7 @@ import InstanceFormMenu, {
   CLOUD_INIT,
   DISK_DEVICES,
   MAIN_CONFIGURATION,
+  MIGRATION,
   RESOURCE_LIMITS,
   SECURITY_POLICIES,
   SNAPSHOTS,
@@ -1074,12 +1093,17 @@ import FormFooterLayout from "components/forms/FormFooterLayout";
 import { useToastNotification } from "context/toastNotificationProvider";
 import { useDocs } from "context/useDocs";
 import { instanceNameValidation } from "util/instances";
+import MigrationForm, {
+  MigrationFormValues,
+  migrationPayload,
+} from "components/forms/MigrationForm";
 &nbsp;
 export type CreateInstanceFormValues = InstanceDetailsFormValues &amp;
   FormDeviceValues &amp;
   ResourceLimitsFormValues &amp;
   SecurityPoliciesFormValues &amp;
   SnapshotFormValues &amp;
+  MigrationFormValues &amp;
   CloudInitFormValues &amp;
   YamlFormValues;
 &nbsp;
@@ -1330,6 +1354,7 @@ const CreateInstance: FC = <span class="cstat-no" title="statement not covered" 
         ...resourceLimitsPayload(values),
         ...securityPoliciesPayload(values),
         ...snapshotsPayload(values),
+        ...migrationPayload(values),
         ...cloudInitPayload(values),
       },
     };
@@ -1404,6 +1429,8 @@ const CreateInstance: FC = <span class="cstat-no" title="statement not covered" 
 &nbsp;
             {section === <span class="branch-0 cbranch-no" title="branch not covered" >SNAPSHOTS &amp;&amp; &lt;InstanceSnapshotsForm formik={formik} /&gt;}</span>
 &nbsp;
+            {section === <span class="branch-0 cbranch-no" title="branch not covered" >MIGRATION &amp;&amp; &lt;MigrationForm formik={formik} /&gt;}</span>
+&nbsp;
             {section === <span class="branch-0 cbranch-no" title="branch not covered" >CLOUD_INIT &amp;&amp; &lt;CloudInitForm formik={formik} /&gt;}</span>
 &nbsp;
             {section === YAML_CONFIGURATION &amp;&amp; (
@@ -1471,7 +1498,7 @@ export default CreateInstance;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-18T15:51:59.977Z
+                at 2024-07-18T17:37:21.552Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
