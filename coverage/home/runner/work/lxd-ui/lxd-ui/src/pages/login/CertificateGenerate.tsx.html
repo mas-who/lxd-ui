@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>0/43</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>0/43</span>
             </div>
         
             
@@ -279,7 +279,9 @@
 <a name='L214'></a><a href='#L214'>214</a>
 <a name='L215'></a><a href='#L215'>215</a>
 <a name='L216'></a><a href='#L216'>216</a>
-<a name='L217'></a><a href='#L217'>217</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -361,12 +363,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -444,6 +441,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -575,6 +579,8 @@ const CertificateGenerate: FC = <span class="cstat-no" title="statement not cove
 <span class="cstat-no" title="statement not covered" >    downloadLink.click();</span>
   };
 &nbsp;
+  const crtFileName = <span class="cstat-no" title="statement not covered" >`lxd-ui-${location.hostname}.crt`;</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;CustomLayout
       mainClassName="certificate-generate"
@@ -641,34 +647,34 @@ const CertificateGenerate: FC = <span class="cstat-no" title="statement not cove
                 &lt;/Col&gt;
                 &lt;Col size={8}&gt;
                   &lt;div className="p-stepped-list__content"&gt;
-                    &lt;p&gt;
-                      Download &lt;code&gt;{"&lt;certificate-name&gt;"}.crt&lt;/code&gt; and add
-                      it to the LXD trust store
-                    &lt;/p&gt;
+                    &lt;Row&gt;
+                      &lt;Col size={6}&gt;
+                        &lt;p&gt;
+                          Download the &lt;code&gt;.crt&lt;/code&gt; file and add it to the
+                          LXD trust store
+                        &lt;/p&gt;
+                      &lt;/Col&gt;
+                      {certs &amp;&amp; (
+                        &lt;Col size={2}&gt;
+                          &lt;Button
+                            className="download-crt"
+                            onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >d</span>ownloadText(crtFileName, certs.crt)}</span>
+                          &gt;
+                            Download&amp;nbsp;crt
+                          &lt;/Button&gt;
+                        &lt;/Col&gt;
+                      )}
+                    &lt;/Row&gt;
                     &lt;div className="p-code-snippet"&gt;
                       &lt;pre className="p-code-snippet__block--icon"&gt;
                         &lt;code&gt;
                           lxc config trust add Downloads/
-                          {"&lt;certificate-name&gt;"}.crt
+                          {crtFileName}
                         &lt;/code&gt;
                       &lt;/pre&gt;
                     &lt;/div&gt;
                   &lt;/div&gt;
                 &lt;/Col&gt;
-                {certs &amp;&amp; (
-                  &lt;Col size={3}&gt;
-                    &lt;Button
-                      onClick={<span class="fstat-no" title="function not covered" >() =&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        downloadText(</span>
-                          `lxd-ui-${location.hostname}.crt`,
-                          certs.crt,
-                        )
-                      }
-                    &gt;
-                      Download crt
-                    &lt;/Button&gt;
-                  &lt;/Col&gt;
-                )}
               &lt;/Row&gt;
             &lt;/li&gt;
             &lt;li className="p-stepped-list__item"&gt;
@@ -718,7 +724,7 @@ export default CertificateGenerate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-16T07:41:57.998Z
+                at 2024-08-19T10:47:09.536Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
