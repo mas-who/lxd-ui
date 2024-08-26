@@ -518,29 +518,29 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
           &lt;table&gt;
             &lt;tbody&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;Name&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;Name&lt;/th&gt;
                 &lt;td&gt;
                   &lt;ItemName item={network} /&gt;
                 &lt;/td&gt;
               &lt;/tr&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;Description&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;Description&lt;/th&gt;
                 &lt;td&gt;{network.<span class="branch-0 cbranch-no" title="branch not covered" >description ? network.description : <span class="branch-1 cbranch-no" title="branch not covered" >"</span>-"}&lt;</span>/td&gt;
               &lt;/tr&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;Type&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;Type&lt;/th&gt;
                 &lt;td&gt;{network.type}&lt;/td&gt;
               &lt;/tr&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;State&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;State&lt;/th&gt;
                 &lt;td&gt;{network.status}&lt;/td&gt;
               &lt;/tr&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;IPv4&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;IPv4&lt;/th&gt;
                 &lt;td&gt;{network.config["ipv4.address"]}&lt;/td&gt;
               &lt;/tr&gt;
               &lt;tr&gt;
-                &lt;th className="p-muted-heading"&gt;IPv6&lt;/th&gt;
+                &lt;th className="u-text--muted"&gt;IPv6&lt;/th&gt;
                 &lt;td&gt;{network.config["ipv6.address"]}&lt;/td&gt;
               &lt;/tr&gt;
             &lt;/tbody&gt;
@@ -556,25 +556,25 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
             &lt;table&gt;
               &lt;tbody&gt;
                 &lt;tr className="list-wrapper"&gt;
-                  &lt;th className="p-muted-heading"&gt;RX&lt;/th&gt;
+                  &lt;th className="u-text--muted"&gt;RX&lt;/th&gt;
                   &lt;td&gt;
                     {humanFileSize(networkState?.counters.<span class="branch-0 cbranch-no" title="branch not covered" >bytes_received ?? <span class="branch-1 cbranch-no" title="branch not covered" >0)</span></span>}{" "}
                     ({networkState?.counters.<span class="branch-0 cbranch-no" title="branch not covered" >packets_received ?? <span class="branch-1 cbranch-no" title="branch not covered" >0} </span></span>packets)
                   &lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr className="list-wrapper"&gt;
-                  &lt;th className="p-muted-heading"&gt;TX&lt;/th&gt;
+                  &lt;th className="u-text--muted"&gt;TX&lt;/th&gt;
                   &lt;td&gt;
                     {humanFileSize(networkState?.counters.<span class="branch-0 cbranch-no" title="branch not covered" >bytes_sent ?? <span class="branch-1 cbranch-no" title="branch not covered" >0)</span></span>} (
                     {networkState?.counters.<span class="branch-0 cbranch-no" title="branch not covered" >packets_sent ?? <span class="branch-1 cbranch-no" title="branch not covered" >0} </span></span>packets)
                   &lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr className="list-wrapper"&gt;
-                  &lt;th className="p-muted-heading"&gt;MAC address&lt;/th&gt;
+                  &lt;th className="u-text--muted"&gt;MAC address&lt;/th&gt;
                   &lt;td&gt;{networkState?.<span class="branch-0 cbranch-no" title="branch not covered" >hwaddr ?? <span class="branch-1 cbranch-no" title="branch not covered" >"-"}&lt;</span></span>/td&gt;
                 &lt;/tr&gt;
                 &lt;tr className="list-wrapper"&gt;
-                  &lt;th className="p-muted-heading"&gt;MTU&lt;/th&gt;
+                  &lt;th className="u-text--muted"&gt;MTU&lt;/th&gt;
                   &lt;td&gt;{networkState?.<span class="branch-0 cbranch-no" title="branch not covered" >mtu ?? <span class="branch-1 cbranch-no" title="branch not covered" >"-"}&lt;</span></span>/td&gt;
                 &lt;/tr&gt;
               &lt;/tbody&gt;
@@ -590,7 +590,7 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
           &lt;table&gt;
             &lt;tbody&gt;
               &lt;tr className="list-wrapper"&gt;
-                &lt;th className="p-muted-heading"&gt;
+                &lt;th className="u-text--muted"&gt;
                   Instances ({data.instances.length})
                 &lt;/th&gt;
                 &lt;td&gt;
@@ -610,7 +610,7 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
                 &lt;/td&gt;
               &lt;/tr&gt;
               &lt;tr className="list-wrapper"&gt;
-                &lt;th className="p-muted-heading"&gt;
+                &lt;th className="u-text--muted"&gt;
                   Profiles ({data.profiles.length})
                 &lt;/th&gt;
                 &lt;td&gt;
@@ -649,7 +649,7 @@ export default NetworkDetailOverview;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-26T12:56:20.607Z
+                at 2024-08-26T14:45:16.174Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
