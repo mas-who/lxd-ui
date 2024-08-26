@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.35% </span>
+                <span class="strong">13.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/337</span>
+                <span class='fraction'>45/328</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5% </span>
+                <span class="strong">5.26% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/20</span>
+                <span class='fraction'>1/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.35% </span>
+                <span class="strong">15.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/293</span>
+                <span class='fraction'>45/287</span>
             </div>
         
             
@@ -350,13 +350,7 @@
 <a name='L285'></a><a href='#L285'>285</a>
 <a name='L286'></a><a href='#L286'>286</a>
 <a name='L287'></a><a href='#L287'>287</a>
-<a name='L288'></a><a href='#L288'>288</a>
-<a name='L289'></a><a href='#L289'>289</a>
-<a name='L290'></a><a href='#L290'>290</a>
-<a name='L291'></a><a href='#L291'>291</a>
-<a name='L292'></a><a href='#L292'>292</a>
-<a name='L293'></a><a href='#L293'>293</a>
-<a name='L294'></a><a href='#L294'>294</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">29x</span>
+<a name='L288'></a><a href='#L288'>288</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
@@ -399,12 +393,6 @@
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -665,7 +653,7 @@ import * as Yup from "yup";
 import { createInstance, fetchInstances } from "api/instances";
 import { isClusteredServer } from "util/settings";
 import { useSettings } from "context/useSettings";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "util/queryKeys";
 import { fetchStoragePools } from "api/storage-pools";
 import { fetchClusterMembers } from "api/cluster";
@@ -698,7 +686,6 @@ const DuplicateInstanceForm: FC&lt;Props&gt; = <span class="cstat-no" title="sta
 <span class="cstat-no" title="statement not covered" >  const controllerState = <span class="cstat-no" title="statement not covered" >useState&lt;AbortController | null&gt;(null);</span></span>
 <span class="cstat-no" title="statement not covered" >  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span></span>
 <span class="cstat-no" title="statement not covered" >  const eventQueue = <span class="cstat-no" title="statement not covered" >useEventQueue();</span></span>
-<span class="cstat-no" title="statement not covered" >  const queryClient = <span class="cstat-no" title="statement not covered" >useQueryClient();</span></span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const { data: projects = <span class="branch-0 cbranch-no" title="branch not covered" >[], i</span>sLoading: projectsLoading } = <span class="cstat-no" title="statement not covered" >useQuery({</span></span>
 <span class="cstat-no" title="statement not covered" >    queryKey: [queryKeys.projects],</span>
@@ -753,11 +740,6 @@ const DuplicateInstanceForm: FC&lt;Props&gt; = <span class="cstat-no" title="sta
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      return `${newInstanceName}-${count}`;</span></span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    void queryClient.invalidateQueries({</span></span>
-<span class="cstat-no" title="statement not covered" >      predicate: <span class="fstat-no" title="function not covered" >(q</span>uery) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return query.queryKey[0] === queryKeys.instances;</span></span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    return newInstanceName;</span></span>
 <span class="cstat-no" title="statement not covered" >  };</span>
@@ -949,7 +931,7 @@ export default DuplicateInstanceForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-22T16:37:51.168Z
+                at 2024-08-26T12:56:20.607Z
             </div>
         <script src="../../../../../../../../../prettify.js"></script>
         <script>
