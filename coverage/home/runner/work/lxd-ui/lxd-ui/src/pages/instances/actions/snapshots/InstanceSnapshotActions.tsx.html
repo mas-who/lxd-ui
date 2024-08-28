@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.86% </span>
+                <span class="strong">82.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>167/204</span>
+                <span class='fraction'>175/212</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.97% </span>
+                <span class="strong">96.15% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>167/174</span>
+                <span class='fraction'>175/182</span>
             </div>
         
             
@@ -237,7 +237,16 @@
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
 <a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">29x</span>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
@@ -358,16 +367,23 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
@@ -426,6 +442,7 @@ import ConfirmationForce from "components/ConfirmationForce";
 import { useEventQueue } from "context/eventQueue";
 import InstanceEditSnapshotBtn from "./InstanceEditSnapshotBtn";
 import CreateImageFromInstanceSnapshotBtn from "pages/instances/actions/snapshots/CreateImageFromInstanceSnapshotBtn";
+import CreateInstanceFromSnapshotBtn from "./CreateInstanceFromSnapshotBtn";
 &nbsp;
 interface Props {
   instance: LxdInstance;
@@ -516,13 +533,6 @@ const InstanceSnapshotActions: FC&lt;Props&gt; = <span class="cstat-no" title="s
             isDeleting={isDeleting}
             isRestoring={isRestoring}
           /&gt;,
-          &lt;CreateImageFromInstanceSnapshotBtn
-            key="publish"
-            instance={instance}
-            snapshot={snapshot}
-            isRestoring={isRestoring}
-            isDeleting={isDeleting}
-          /&gt;,
           &lt;ConfirmationButton
             key="restore"
             appearance="base"
@@ -555,6 +565,20 @@ const InstanceSnapshotActions: FC&lt;Props&gt; = <span class="cstat-no" title="s
           &gt;
             &lt;Icon name="change-version" /&gt;
           &lt;/ConfirmationButton&gt;,
+          &lt;CreateImageFromInstanceSnapshotBtn
+            key="publish"
+            instance={instance}
+            snapshot={snapshot}
+            isRestoring={isRestoring}
+            isDeleting={isDeleting}
+          /&gt;,
+          &lt;CreateInstanceFromSnapshotBtn
+            key="duplicate"
+            instance={instance}
+            snapshot={snapshot}
+            isDeleting={isDeleting}
+            isRestoring={isRestoring}
+          /&gt;,
           &lt;ConfirmationButton
             key="delete"
             appearance="base"
@@ -592,7 +616,7 @@ export default InstanceSnapshotActions;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-27T10:31:11.493Z
+                at 2024-08-28T10:46:33.748Z
             </div>
         <script src="../../../../../../../../../../prettify.js"></script>
         <script>
