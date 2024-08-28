@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.52% </span>
+                <span class="strong">77.19% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>88/115</span>
+                <span class='fraction'>88/114</span>
             </div>
         
             
@@ -530,27 +530,27 @@
 <span class="cline-any cline-yes">181x</span>
 <span class="cline-any cline-yes">181x</span>
 <span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">416x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">181x</span>
 <span class="cline-any cline-yes">181x</span>
 <span class="cline-any cline-yes">2157x</span>
@@ -787,18 +787,18 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">181x</span>
 <span class="cline-any cline-yes">181x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
-<span class="cline-any cline-yes">3750x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
+<span class="cline-any cline-yes">3760x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { LxdIdentity, LxdPermission } from "types/permissions"<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >;</span></span>
 import { OptionHTMLAttributes } from "react";
 import { LxdImage } from "types/image";
@@ -1158,7 +1158,7 @@ export const enablePermissionsFeature = <span class="fstat-no" title="function n
   const { hasAccessManagement, settings } = <span class="cstat-no" title="statement not covered" >useSupportedFeatures();</span>
 &nbsp;
   const <span class="cstat-no" title="statement not covered" >userShowPermissions =</span>
-    (settings?.config?.["user.show_permissions"] ?? <span class="branch-1 cbranch-no" title="branch not covered" >"false") === "</span>true";
+    (settings?.config?.["user.show_permissions"] ?? "false") === "true";
 &nbsp;
   const hasOIDCSettings =
 <span class="cstat-no" title="statement not covered" >    !!settings?.config?.["oidc.audience"<span class="branch-0 cbranch-no" title="branch not covered" >] &amp;&amp;</span></span>
@@ -1174,7 +1174,7 @@ export const enablePermissionsFeature = <span class="fstat-no" title="function n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-28T19:39:26.440Z
+                at 2024-08-28T21:21:02.246Z
             </div>
         <script src="../../../../../../../prettify.js"></script>
         <script>
