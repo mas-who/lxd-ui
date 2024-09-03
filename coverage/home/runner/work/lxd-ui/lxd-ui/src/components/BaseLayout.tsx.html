@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.44% </span>
+                <span class="strong">94.28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>34/36</span>
+                <span class='fraction'>33/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
@@ -96,43 +96,41 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">657x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">649x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, ReactNode } from "react";
-import classnames from <span class="branch-0 cbranch-no" title="branch not covered" >"classnames";</span>
+import { AppMain, Panel } from "@canonical/react-components";
 &nbsp;
 interface Props {
   title: string | ReactNode;
@@ -150,17 +148,16 @@ const BaseLayout: FC&lt;Props&gt; = <span class="cstat-no" title="statement not 
   contentClassName,
 }: Props) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;main className={classnames("l-main", mainClassName)}&gt;
-      &lt;div className="p-panel"&gt;
-        &lt;div className="p-panel__header"&gt;
-          &lt;h1 className="p-panel__title"&gt;{title}&lt;/h1&gt;
-          {controls &amp;&amp; &lt;div className="p-panel__controls"&gt;{controls}&lt;/div&gt;}
-        &lt;/div&gt;
-        &lt;div className={classnames("p-panel__content", contentClassName)}&gt;
-          {children}
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/main&gt;
+    &lt;AppMain className={mainClassName}&gt;
+      &lt;Panel
+        title={title}
+        controls={controls}
+        wrapContent
+        contentClassName={contentClassName}
+      &gt;
+        {children}
+      &lt;/Panel&gt;
+    &lt;/AppMain&gt;
   );
 };
 &nbsp;
@@ -172,7 +169,7 @@ export default BaseLayout;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-03T16:28:04.698Z
+                at 2024-09-03T17:08:43.971Z
             </div>
         <script src="../../../../../../../prettify.js"></script>
         <script>
