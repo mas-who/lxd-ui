@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.93% </span>
+                <span class="strong">80.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>235/294</span>
+                <span class='fraction'>245/306</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.87% </span>
+                <span class="strong">30.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/62</span>
+                <span class='fraction'>21/68</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.79% </span>
+                <span class="strong">91.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>235/256</span>
+                <span class='fraction'>245/268</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -319,7 +319,23 @@
 <a name='L254'></a><a href='#L254'>254</a>
 <a name='L255'></a><a href='#L255'>255</a>
 <a name='L256'></a><a href='#L256'>256</a>
-<a name='L257'></a><a href='#L257'>257</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -518,6 +534,14 @@
 <span class="cline-any cline-yes">65x</span>
 <span class="cline-any cline-yes">65x</span>
 <span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
 <span class="cline-any cline-yes">65x</span>
 <span class="cline-any cline-yes">65x</span>
 <span class="cline-any cline-yes">65x</span>
@@ -621,6 +645,8 @@ import ProfileFormMenu, {
   SNAPSHOTS,
   YAML_CONFIGURATION,
   NETWORK_DEVICES,
+  GPU_DEVICES,
+  OTHER_DEVICES,
 } from "pages/profiles/forms/ProfileFormMenu";
 import ProfileDetailsForm, {
   profileDetailPayload,
@@ -640,6 +666,8 @@ import MigrationForm, {
   MigrationFormValues,
   migrationPayload,
 } from "components/forms/MigrationForm";
+import GPUDevicesForm from "components/forms/GPUDeviceForm";
+import OtherDeviceForm from "components/forms/OtherDeviceForm";
 import YamlSwitch from "components/forms/YamlSwitch";
 import YamlNotification from "components/forms/YamlNotification";
 &nbsp;
@@ -765,6 +793,14 @@ const CreateProfile: FC = <span class="cstat-no" title="statement not covered" >
               &lt;NetworkDevicesForm formik={formik} project={project} /&gt;
             )}
 &nbsp;
+            {section === <span class="branch-0 cbranch-no" title="branch not covered" >GPU_DEVICES &amp;&amp; (</span>
+<span class="cstat-no" title="statement not covered" >              &lt;GPUDevicesForm formik={formik} project={project} /&gt;</span>
+            )}
+&nbsp;
+            {section === <span class="branch-0 cbranch-no" title="branch not covered" >OTHER_DEVICES &amp;&amp; (</span>
+<span class="cstat-no" title="statement not covered" >              &lt;OtherDeviceForm formik={formik} project={project} /&gt;</span>
+            )}
+&nbsp;
             {section === <span class="branch-0 cbranch-no" title="branch not covered" >RESOURCE_LIMITS &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >              &lt;ResourceLimitsForm formik={formik} /&gt;</span>
             )}
@@ -838,7 +874,7 @@ export default CreateProfile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-04T21:53:29.908Z
+                at 2024-09-05T13:05:47.884Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>

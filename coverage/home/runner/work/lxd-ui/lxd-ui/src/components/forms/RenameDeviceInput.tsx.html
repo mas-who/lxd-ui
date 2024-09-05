@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for home/runner/work/lxd-ui/lxd-ui/src/components/forms/RenameDiskDeviceInput.tsx</title>
+    <title>Code coverage report for home/runner/work/lxd-ui/lxd-ui/src/components/forms/RenameDeviceInput.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../../../index.html">All files</a> / <a href="index.html">home/runner/work/lxd-ui/lxd-ui/src/components/forms</a> RenameDiskDeviceInput.tsx</h1>
+        <h1><a href="../../../../../../../../index.html">All files</a> / <a href="index.html">home/runner/work/lxd-ui/lxd-ui/src/components/forms</a> RenameDeviceInput.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/50</span>
+                <span class='fraction'>39/52</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.09% </span>
+                <span class="strong">84.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/44</span>
+                <span class='fraction'>39/46</span>
             </div>
         
             
@@ -107,16 +107,19 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
@@ -149,8 +152,9 @@
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, useState } from "react";
 import { Button, Icon, Input, Label } from "@canonical/react-components";
 &nbsp;
@@ -160,10 +164,11 @@ interface Props {
   setName: (val: string) =&gt; void;
 }
 &nbsp;
-const RenameDiskDeviceInput: FC&lt;Props&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> name, index, setName }) =&gt; {</span>
+const RenameDeviceInput: FC&lt;Props&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> name, index, setName }) =&gt; {</span>
   const [isEditing, setEditing] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="rename-disk-device device-name"&gt;
+    &lt;div className="rename-device device-name"&gt;
       {<span class="branch-0 cbranch-no" title="branch not covered" >isEditing ? (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;Input</span>
 <span class="cstat-no" title="statement not covered" >          autoFocus</span>
@@ -175,16 +180,17 @@ const RenameDiskDeviceInput: FC&lt;Props&gt; = <span class="cstat-no" title="sta
         /&gt;
       ) : (
         &lt;&gt;
-          &lt;Label forId={`pool-${index}-pool-name`}&gt;
+          &lt;Label forId={`device-${index}-name`}&gt;
             &lt;b&gt;{name}&lt;/b&gt;
           &lt;/Label&gt;
           &lt;Button
-            id={`pool-${index}-pool-name`}
+            id={`device-${index}-name`}
             hasIcon
+            dense
             onClick={<span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >s</span>etEditing(true)}</span></span>
             appearance="base"
             className="u-no-margin--bottom"
-            aria-label={`Rename disk device`}
+            aria-label={`Rename device`}
           &gt;
             &lt;Icon name="edit" /&gt;
           &lt;/Button&gt;
@@ -194,7 +200,7 @@ const RenameDiskDeviceInput: FC&lt;Props&gt; = <span class="cstat-no" title="sta
   );
 };
 &nbsp;
-export default RenameDiskDeviceInput;
+export default RenameDeviceInput;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -202,7 +208,7 @@ export default RenameDiskDeviceInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-04T21:53:29.908Z
+                at 2024-09-05T13:05:47.884Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
