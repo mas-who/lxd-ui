@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10.86% </span>
+                <span class="strong">10.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/230</span>
+                <span class='fraction'>23/227</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.54% </span>
+                <span class="strong">6.25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/22</span>
+                <span class='fraction'>1/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.43% </span>
+                <span class="strong">11.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/201</span>
+                <span class='fraction'>23/199</span>
             </div>
         
             
@@ -262,31 +262,27 @@
 <a name='L197'></a><a href='#L197'>197</a>
 <a name='L198'></a><a href='#L198'>198</a>
 <a name='L199'></a><a href='#L199'>199</a>
-<a name='L200'></a><a href='#L200'>200</a>
-<a name='L201'></a><a href='#L201'>201</a>
-<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
+<a name='L200'></a><a href='#L200'>200</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -463,8 +459,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">173x</span>
-<span class="cline-any cline-yes">173x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, KeyboardEvent, useState } from "react";
 import {
   ActionButton,
@@ -477,17 +473,15 @@ import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "util/queryKeys";
 import { fetchClusterMembers } from "api/cluster";
 import Loader from "components/Loader";
-import { pluralize } from "util/instanceBulkActions";
-import { getValidInstancesForMigration } from "util/instanceMigrate";
 import ScrollableTable from "components/ScrollableTable";
 &nbsp;
 interface Props {
   close: () =&gt; void;
-  migrate: (target: string, instances: LxdInstance[]) =&gt; void;
-  instances: LxdInstance[];
+  migrate: (target: string, instance: LxdInstance) =&gt; void;
+  instance: LxdInstance;
 }
 &nbsp;
-const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >({</span> close, migrate, instances }) =&gt; {</span></span>
+const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >({</span> close, migrate, instance }) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >  const { data: members = <span class="branch-0 cbranch-no" title="branch not covered" >[], i</span>sLoading } = <span class="cstat-no" title="statement not covered" >useQuery({</span></span>
 <span class="cstat-no" title="statement not covered" >    queryKey: [queryKeys.cluster, queryKeys.members],</span>
 <span class="cstat-no" title="statement not covered" >    queryFn: fetchClusterMembers,</span>
@@ -495,16 +489,14 @@ const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="stat
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const [selectedMember, setSelectedMember] = <span class="cstat-no" title="statement not covered" >useState("");</span></span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const isBulkMigration = <span class="cstat-no" title="statement not covered" >instances.length &gt; 1;</span></span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const handleEscKey = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>: KeyboardEvent&lt;HTMLElement&gt;) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    if (e.key === "Escape") {</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      close();</span></span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const handleMigrate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>nstances: LxdInstance[]) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    migrate(selectedMember, instances);</span></span>
+<span class="cstat-no" title="statement not covered" >  const handleMigrate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>nstance: LxdInstance) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    migrate(selectedMember, instance);</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    close();</span></span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -527,7 +519,7 @@ const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="stat
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const rows = <span class="cstat-no" title="statement not covered" >members.map(<span class="fstat-no" title="function not covered" >(m</span>ember) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    const disableReason =</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      !isBulkMigration &amp;&amp; member.server_name === instances[0].location</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      member.server_name === instance.location</span></span>
 <span class="cstat-no" title="statement not covered" >        ? "Instance already running on this member"</span>
 <span class="cstat-no" title="statement not covered" >        : "";</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -605,13 +597,15 @@ const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="stat
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const modalTitle = <span class="cstat-no" title="statement not covered" >selectedMember</span></span>
 <span class="cstat-no" title="statement not covered" >    ? "Confirm migration"</span>
-<span class="cstat-no" title="statement not covered" >    : isBulkMigration</span>
-<span class="cstat-no" title="statement not covered" >      ? `Choose target cluster member for ${instances.length} selected ${pluralize("instance", instances.length)}`</span>
-<span class="cstat-no" title="statement not covered" >      : `Choose target cluster member for instance ${instances[0].name}`;</span>
+<span class="cstat-no" title="statement not covered" >    : `Choose target cluster member for instance ${instance.name}`;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const { summary, validInstances } = <span class="cstat-no" title="statement not covered" >getValidInstancesForMigration(</span></span>
-<span class="cstat-no" title="statement not covered" >    instances,</span>
-<span class="cstat-no" title="statement not covered" >    selectedMember,</span>
+<span class="cstat-no" title="statement not covered" >  const summary = (</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    &lt;div className="migrate-instance-summary"&gt;</span></span>
+<span class="cstat-no" title="statement not covered" >      &lt;p&gt;</span>
+<span class="cstat-no" title="statement not covered" >        This will migrate instance &lt;strong&gt;{instance.name}&lt;/strong&gt; to cluster</span>
+<span class="cstat-no" title="statement not covered" >        member &lt;b&gt;{selectedMember}&lt;/b&gt;.</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >  return (</span></span>
@@ -633,8 +627,8 @@ const MigrateInstanceModal: FC&lt;Props&gt; = <span class="cstat-no" title="stat
 <span class="cstat-no" title="statement not covered" >          &lt;ActionButton</span>
 <span class="cstat-no" title="statement not covered" >            appearance="positive"</span>
 <span class="cstat-no" title="statement not covered" >            className="u-no-margin--bottom"</span>
-<span class="cstat-no" title="statement not covered" >            onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleMigrate(validInstances)}</span></span>
-<span class="cstat-no" title="statement not covered" >            disabled={!selectedMember || !validInstances.length}</span>
+<span class="cstat-no" title="statement not covered" >            onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleMigrate(instance)}</span></span>
+<span class="cstat-no" title="statement not covered" >            disabled={!selectedMember}</span>
 <span class="cstat-no" title="statement not covered" >          &gt;</span>
 <span class="cstat-no" title="statement not covered" >            Migrate</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/ActionButton&gt;</span>
@@ -673,7 +667,7 @@ export default MigrateInstanceModal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-06T13:04:29.798Z
+                at 2024-09-09T08:30:04.567Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
