@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/12</span>
+                <span class='fraction'>10/13</span>
             </div>
         
             
@@ -99,42 +99,42 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">522x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">488x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">524x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">490x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">111x</span>
-<span class="cline-any cline-yes">5702x</span>
-<span class="cline-any cline-yes">5702x</span>
-<span class="cline-any cline-yes">5702x</span>
-<span class="cline-any cline-yes">5702x</span>
-<span class="cline-any cline-yes">5702x</span>
-<span class="cline-any cline-yes">3867x</span>
-<span class="cline-any cline-yes">3867x</span>
-<span class="cline-any cline-yes">1835x</span>
-<span class="cline-any cline-yes">1835x</span>
-<span class="cline-any cline-yes">1835x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-yes">5982x</span>
+<span class="cline-any cline-yes">5982x</span>
+<span class="cline-any cline-yes">5982x</span>
+<span class="cline-any cline-yes">5982x</span>
+<span class="cline-any cline-yes">5982x</span>
+<span class="cline-any cline-yes">3985x</span>
+<span class="cline-any cline-yes">3985x</span>
+<span class="cline-any cline-yes">1997x</span>
+<span class="cline-any cline-yes">1997x</span>
+<span class="cline-any cline-yes">1997x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { LxdProfile } from "types/profile";
 import { LxdInstance } from "types/instance";
 import { OptionHTMLAttributes } from "react";
@@ -165,7 +165,7 @@ export const optionRenderer = <span class="fstat-no" title="function not covered
   optionList?: OptionHTMLAttributes&lt;HTMLOptionElement&gt;[],
 ): string =&gt; {
   const match = <span class="cstat-no" title="statement not covered" >optionList?.find((item) =&gt; item.value === value);</span>
-<span class="cstat-no" title="statement not covered" >  if (match?.label &amp;&amp; value !== "") {</span>
+<span class="cstat-no" title="statement not covered" >  if (match?.label &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >value !== "") {</span></span>
 <span class="cstat-no" title="statement not covered" >    return match.label;</span>
   }
 &nbsp;
@@ -178,7 +178,7 @@ export const optionRenderer = <span class="fstat-no" title="function not covered
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-10T08:45:39.438Z
+                at 2024-09-12T08:41:03.444Z
             </div>
         <script src="../../../../../../../prettify.js"></script>
         <script>
