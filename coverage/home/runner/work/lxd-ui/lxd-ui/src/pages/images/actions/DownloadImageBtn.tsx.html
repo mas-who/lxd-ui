@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.97% </span>
+                <span class="strong">73.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/73</span>
+                <span class='fraction'>65/89</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.18% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/55</span>
+                <span class='fraction'>65/70</span>
             </div>
         
             
@@ -118,7 +118,23 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -149,6 +165,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -177,6 +207,7 @@
 import { LxdImage } from "types/image";
 import { ActionButton, Icon } from "@canonical/react-components";
 import { useToastNotification } from "context/toastNotificationProvider";
+import ResourceLink from "components/ResourceLink";
 &nbsp;
 interface Props {
   image: LxdImage;
@@ -192,6 +223,13 @@ const DownloadImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statemen
 &nbsp;
   const handleExport = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
+    const imageLink = (
+<span class="cstat-no" title="statement not covered" >      &lt;ResourceLink</span>
+        to={`/ui/project/${project}/images`}
+        type="image"
+        value={description}
+      /&gt;
+    );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const a = <span class="cstat-no" title="statement not covered" >document.createElement("a");</span>
@@ -201,10 +239,17 @@ const DownloadImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statemen
 <span class="cstat-no" title="statement not covered" >      window.URL.revokeObjectURL(url);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      toastNotify.success(</span>
-        `Image ${description} download started. Please check your downloads folder.`,
+        &lt;&gt;
+          Image {imageLink} download started. Please check your downloads
+          folder.
+        &lt;/&gt;,
       );
     } catch (e) {
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      toastNotify.failure(`Image ${description} was unable to download.`, e);</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      toastNotify.failure(</span></span>
+<span class="cstat-no" title="statement not covered" >        `Image ${description} was unable to download.`,</span>
+<span class="cstat-no" title="statement not covered" >        e,</span>
+<span class="cstat-no" title="statement not covered" >        imageLink,</span>
+<span class="cstat-no" title="statement not covered" >      );</span>
     } finally {
 <span class="cstat-no" title="statement not covered" >      setLoading(false);</span>
     }
@@ -235,7 +280,7 @@ export default DownloadImageBtn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-18T12:28:21.687Z
+                at 2024-10-18T13:15:18.585Z
             </div>
         <script src="../../../../../../../../../prettify.js"></script>
         <script>
