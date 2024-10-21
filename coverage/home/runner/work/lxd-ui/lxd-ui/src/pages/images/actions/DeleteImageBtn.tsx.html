@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.95% </span>
+                <span class="strong">70.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>71/96</span>
+                <span class='fraction'>73/104</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.2% </span>
+                <span class="strong">86.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>71/77</span>
+                <span class='fraction'>73/84</span>
             </div>
         
             
@@ -140,7 +140,15 @@
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -163,6 +171,7 @@
 <span class="cline-any cline-yes">69x</span>
 <span class="cline-any cline-yes">69x</span>
 <span class="cline-any cline-yes">69x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -182,10 +191,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -225,6 +239,7 @@ import { queryKeys } from "util/queryKeys";
 import { ConfirmationButton, Icon } from "@canonical/react-components";
 import { useEventQueue } from "context/eventQueue";
 import { useToastNotification } from "context/toastNotificationProvider";
+import ResourceLabel from "components/ResourceLabel";
 &nbsp;
 interface Props {
   image: LxdImage;
@@ -241,6 +256,7 @@ const DeleteImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statement 
 &nbsp;
   const handleDelete = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
+    const imageLabel = <span class="cstat-no" title="statement not covered" >&lt;ResourceLabel bold type="image" value={description} /&gt;;</span>
 <span class="cstat-no" title="statement not covered" >    void deleteImage(image, project)</span>
       .then(<span class="fstat-no" title="function not covered" >(o</span>peration) =&gt;
 <span class="cstat-no" title="statement not covered" >        eventQueue.set(</span>
@@ -252,18 +268,23 @@ const DeleteImageBtn: FC&lt;Props&gt; = <span class="cstat-no" title="statement 
 <span class="cstat-no" title="statement not covered" >            void queryClient.invalidateQueries({</span>
               queryKey: [queryKeys.projects, project],
             });
-<span class="cstat-no" title="statement not covered" >            toastNotify.success(`Image ${description} deleted.`);</span>
+<span class="cstat-no" title="statement not covered" >            toastNotify.success(&lt;&gt;Image {imageLabel} deleted.&lt;/&gt;);</span>
           },
 <span class="fstat-no" title="function not covered" >          (m</span>sg) =&gt;
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            toastNotify.failure(</span></span>
 <span class="cstat-no" title="statement not covered" >              `Image ${description} deletion failed`,</span>
 <span class="cstat-no" title="statement not covered" >              new Error(msg),</span>
+<span class="cstat-no" title="statement not covered" >              imageLabel,</span>
 <span class="cstat-no" title="statement not covered" >            ),</span>
 <span class="fstat-no" title="function not covered" >          () =&gt; <span class="cstat-no" title="statement not covered" >s</span>etLoading(false),</span>
         ),
       )
       .catch((e) =&gt; {
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        toastNotify.failure(`Image ${description} deletion failed`, e);</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        toastNotify.failure(</span></span>
+<span class="cstat-no" title="statement not covered" >          `Image ${description} deletion failed`,</span>
+<span class="cstat-no" title="statement not covered" >          e,</span>
+<span class="cstat-no" title="statement not covered" >          imageLabel,</span>
+<span class="cstat-no" title="statement not covered" >        );</span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        setLoading(false);</span></span>
       });
   };
@@ -301,7 +322,7 @@ export default DeleteImageBtn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../../prettify.js"></script>
         <script>

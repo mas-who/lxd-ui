@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.55% </span>
+                <span class="strong">82.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/103</span>
+                <span class='fraction'>90/109</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.16% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/31</span>
+                <span class='fraction'>10/24</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.67% </span>
+                <span class="strong">97.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/86</span>
+                <span class='fraction'>90/92</span>
             </div>
         
             
@@ -149,7 +149,14 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">12x</span>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -184,6 +191,11 @@
 <span class="cline-any cline-yes">83x</span>
 <span class="cline-any cline-yes">83x</span>
 <span class="cline-any cline-yes">83x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -250,6 +262,7 @@ import { useNavigate } from "react-router-dom";
 import { LxdStoragePool } from "types/storage";
 import { queryKeys } from "util/queryKeys";
 import { useToastNotification } from "context/toastNotificationProvider";
+import ResourceLabel from "components/ResourceLabel";
 &nbsp;
 interface Props {
   pool: LxdStoragePool;
@@ -271,13 +284,18 @@ const DeleteStoragePoolBtn: FC&lt;Props&gt; = <span class="cstat-no" title="stat
 &nbsp;
   const handleDelete = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
-<span class="cstat-no" title="statement not covered" >    deleteStoragePool(pool.name, project)</span>
+<span class="cstat-no" title="statement not covered" >    deleteStoragePool(pool.name)</span>
       .then(() =&gt; {
 <span class="cstat-no" title="statement not covered" >        void queryClient.invalidateQueries({</span>
           queryKey: [queryKeys.storage],
         });
 <span class="cstat-no" title="statement not covered" >        navigate(`/ui/project/${project}/storage/pools`);</span>
-<span class="cstat-no" title="statement not covered" >        toastNotify.success(`Storage pool ${pool.name} deleted.`);</span>
+<span class="cstat-no" title="statement not covered" >        toastNotify.success(</span>
+          &lt;&gt;
+            Storage pool &lt;ResourceLabel bold type="pool" value={pool.name} /&gt;{" "}
+            deleted.
+          &lt;/&gt;,
+        );
       })
       .catch((e) =&gt; {
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        setLoading(false);</span></span>
@@ -303,10 +321,10 @@ const DeleteStoragePoolBtn: FC&lt;Props&gt; = <span class="cstat-no" title="stat
         onConfirm: handleDelete,
         message: "Delete storage",
       }}
-      appearance={!isSmallScreen &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >shouldExpand ? "</span>default" : "base"}
+      appearance={shouldExpand ? "default" : "base"}
       className={classnames("u-no-margin--bottom", {
         "is-dense": !shouldExpand,
-        "has-icon": !isSmallScreen &amp;&amp; shouldExpand,
+        "has-icon": !isSmallScreen,
       })}
       loading={isLoading}
       shiftClickEnabled
@@ -314,8 +332,8 @@ const DeleteStoragePoolBtn: FC&lt;Props&gt; = <span class="cstat-no" title="stat
       disabled={Boolean(disabledReason)}
       onHoverText={disabledReason}
     &gt;
-      {!isSmallScreen &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >shouldExpand ? u</span>ndefined : &lt;Icon name="delete" /&gt;}
-      {!isSmallScreen &amp;&amp; shouldExpand &amp;&amp; "Delete pool"}
+      {(!<span class="branch-0 cbranch-no" title="branch not covered" >isSmallScreen || !shouldExpand) &amp;&amp; &lt;</span>Icon name="delete" /&gt;}
+      {shouldExpand &amp;&amp; &lt;span&gt;Delete pool&lt;/span&gt;}
     &lt;/ConfirmationButton&gt;
   );
 };
@@ -328,7 +346,7 @@ export default DeleteStoragePoolBtn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../../prettify.js"></script>
         <script>

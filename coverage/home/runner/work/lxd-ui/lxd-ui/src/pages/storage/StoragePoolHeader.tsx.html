@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">60.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/99</span>
+                <span class='fraction'>64/105</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">74.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/81</span>
+                <span class='fraction'>64/86</span>
             </div>
         
             
@@ -144,7 +144,13 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -181,6 +187,10 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -236,6 +246,7 @@ import DeleteStoragePoolBtn from "pages/storage/actions/DeleteStoragePoolBtn";
 import { testDuplicateStoragePoolName } from "util/storagePool";
 import { useNotify } from "@canonical/react-components";
 import { useToastNotification } from "context/toastNotificationProvider";
+import ResourceLink from "components/ResourceLink";
 &nbsp;
 interface Props {
   name: string;
@@ -267,11 +278,15 @@ const StoragePoolHeader: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        formik.setSubmitting(false);</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >        return;</span></span>
 <span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      renameStoragePool(name, values.name, project)</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >      renameStoragePool(name, values.name)</span></span>
 <span class="cstat-no" title="statement not covered" >        .then(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          navigate(`/ui/project/${project}/storage/pool/${values.name}`);</span></span>
+<span class="cstat-no" title="statement not covered" >          const url = <span class="cstat-no" title="statement not covered" >`/ui/project/${project}/storage/pool/${values.name}`;</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          navigate(url);</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          toastNotify.success(</span></span>
-<span class="cstat-no" title="statement not covered" >            `Storage pool ${name} renamed to ${values.name}.`,</span>
+<span class="cstat-no" title="statement not covered" >            &lt;&gt;</span>
+<span class="cstat-no" title="statement not covered" >              Storage pool &lt;strong&gt;{name}&lt;/strong&gt; renamed to{" "}</span>
+<span class="cstat-no" title="statement not covered" >              &lt;ResourceLink type="pool" value={values.name} to={url} /&gt;.</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/&gt;,</span>
 <span class="cstat-no" title="statement not covered" >          );</span>
 <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          void formik.setFieldValue("isRenaming", false);</span></span>
 <span class="cstat-no" title="statement not covered" >        })</span>
@@ -295,10 +310,10 @@ const StoragePoolHeader: FC&lt;Props&gt; = <span class="cstat-no" title="stateme
           key="delete"
           pool={pool}
           project={project}
-          shouldExpand={true}
+          shouldExpand
         /&gt;,
       ]}
-      isLoaded={true}
+      isLoaded
       formik={formik}
       renameDisabledReason="Cannot rename storage pools"
     /&gt;
@@ -313,7 +328,7 @@ export default StoragePoolHeader;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>

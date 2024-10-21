@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.33% </span>
+                <span class="strong">90.68% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>243/269</span>
+                <span class='fraction'>253/279</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.18% </span>
+                <span class="strong">99.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>243/245</span>
+                <span class='fraction'>253/255</span>
             </div>
         
             
@@ -308,7 +308,18 @@
 <a name='L243'></a><a href='#L243'>243</a>
 <a name='L244'></a><a href='#L244'>244</a>
 <a name='L245'></a><a href='#L245'>245</a>
-<a name='L246'></a><a href='#L246'>246</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -389,6 +400,12 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -539,6 +556,9 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -581,6 +601,7 @@ import CustomLayout from "components/CustomLayout";
 import PageHeader from "components/PageHeader";
 import HelpLink from "components/HelpLink";
 import NotificationRow from "components/NotificationRow";
+import ResourceLabel from "components/ResourceLabel";
 &nbsp;
 const CustomIsoList: FC = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
   const docBaseLink = <span class="cstat-no" title="statement not covered" >useDocs();</span>
@@ -634,7 +655,13 @@ const CustomIsoList: FC = <span class="cstat-no" title="statement not covered" >
             volume={image.volume}
             project={project}
             onFinish={<span class="fstat-no" title="function not covered" >() =&gt;</span>
-<span class="cstat-no" title="statement not covered" >              toastNotify.success(`Custom iso ${image.aliases} deleted.`)</span>
+<span class="cstat-no" title="statement not covered" >              toastNotify.success(</span>
+                &lt;&gt;
+                  Custom iso{" "}
+                  &lt;ResourceLabel bold type="iso-volume" value={image.aliases} /&gt;{" "}
+                  deleted.
+                &lt;/&gt;,
+              )
             }
           /&gt;,
         ]}
@@ -708,7 +735,7 @@ const CustomIsoList: FC = <span class="cstat-no" title="statement not covered" >
   const content = <span class="cstat-no" title="statement not covered" >!hasImages ? (</span>
     &lt;EmptyState
       className="empty-state"
-      image={&lt;Icon name="mount" className="empty-state-icon" /&gt;}
+      image={&lt;Icon name="iso" className="empty-state-icon" /&gt;}
       title="No custom ISOs found in this project"
     &gt;
       &lt;p&gt;Custom ISOs will appear here&lt;/p&gt;
@@ -722,7 +749,7 @@ const CustomIsoList: FC = <span class="cstat-no" title="statement not covered" >
           &lt;Icon className="external-link-icon" name="external-link" /&gt;
         &lt;/a&gt;
       &lt;/p&gt;
-      &lt;UploadCustomIsoBtn className="empty-state-button" /&gt;
+      &lt;UploadCustomIsoBtn className="empty-state-button" project={project} /&gt;
     &lt;/EmptyState&gt;
   ) : (
     &lt;div className="custom-iso-list"&gt;
@@ -785,7 +812,10 @@ const CustomIsoList: FC = <span class="cstat-no" title="statement not covered" >
           &lt;/PageHeader.Left&gt;
           {hasImages &amp;&amp; (
             &lt;PageHeader.BaseActions&gt;
-              &lt;UploadCustomIsoBtn className="u-float-right u-no-margin--bottom" /&gt;
+              &lt;UploadCustomIsoBtn
+                className="u-float-right u-no-margin--bottom"
+                project={project}
+              /&gt;
             &lt;/PageHeader.BaseActions&gt;
           )}
         &lt;/PageHeader&gt;
@@ -805,7 +835,7 @@ export default CustomIsoList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>

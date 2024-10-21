@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.63% </span>
+                <span class="strong">78.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>236/304</span>
+                <span class='fraction'>239/305</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38% </span>
+                <span class="strong">40.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>19/50</span>
+                <span class='fraction'>19/47</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.32% </span>
+                <span class="strong">97.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>236/245</span>
+                <span class='fraction'>239/245</span>
             </div>
         
             
@@ -352,6 +352,8 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
@@ -380,9 +382,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -550,7 +551,6 @@
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
@@ -580,6 +580,8 @@ import { useSupportedFeatures } from "context/useSupportedFeatures";
 import InstanceFileTypeSelector, {
   InstanceFileType,
 } from "./InstanceFileTypeSelector";
+import ResourceLink from "components/ResourceLink";
+import ResourceLabel from "components/ResourceLabel";
 &nbsp;
 export interface UploadInstanceBackupFileFormValues {
   instanceFile: File | null;
@@ -615,19 +617,18 @@ const UploadInstanceBackupFileForm: FC&lt;Props&gt; = <span class="cstat-no" tit
   const { hasInstanceImportConversion } = <span class="cstat-no" title="statement not covered" >useSupportedFeatures();</span>
 &nbsp;
   const handleSuccess = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>nstanceName: string) =&gt; {</span>
+    const instanceUrl = <span class="cstat-no" title="statement not covered" >`/ui/project/${project?.name}/instance/${instanceName}`;</span>
     const message = (
 <span class="cstat-no" title="statement not covered" >      &lt;&gt;</span>
-        Created instance &lt;strong&gt;{instanceName}&lt;/strong&gt;.
+        Created instance{" "}
+        &lt;ResourceLink type="instance" value={instanceName} to={instanceUrl} /&gt;.
       &lt;/&gt;
     );
 &nbsp;
     const actions = <span class="cstat-no" title="statement not covered" >[</span>
       {
         label: "Configure",
-        onClick: <span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >() =&gt;</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >          navigate(</span></span>
-<span class="cstat-no" title="statement not covered" >            `/ui/project/${project?.name}/instance/${instanceName}/configuration`,</span>
-<span class="cstat-no" title="statement not covered" >          ),</span>
+        onClick: <span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >n</span>avigate(`${instanceUrl}/configuration`),</span></span>
       },
     ];
 &nbsp;
@@ -662,7 +663,7 @@ const UploadInstanceBackupFileForm: FC&lt;Props&gt; = <span class="cstat-no" tit
 <span class="cstat-no" title="statement not covered" >        toastNotify.info(</span>
           &lt;&gt;
             Upload completed. Now creating instance{" "}
-            &lt;strong&gt;{values.name}&lt;/strong&gt;.
+            &lt;ResourceLabel bold type="instance" value={values.name} /&gt;.
           &lt;/&gt;,
         );
 &nbsp;
@@ -763,7 +764,6 @@ const UploadInstanceBackupFileForm: FC&lt;Props&gt; = <span class="cstat-no" tit
           title={noFileSelectedMessage}
         /&gt;
         &lt;StoragePoolSelector
-          project={project?.<span class="branch-0 cbranch-no" title="branch not covered" >name || ""}</span>
           value={formik.values.pool}
           setValue={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >void formik.setFieldValue("pool", value)}</span>
           selectProps={{
@@ -805,7 +805,7 @@ export default UploadInstanceBackupFileForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../../prettify.js"></script>
         <script>

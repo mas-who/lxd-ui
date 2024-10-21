@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.18% </span>
+                <span class="strong">32.65% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>16/53</span>
+                <span class='fraction'>16/49</span>
             </div>
         
             
@@ -424,20 +424,20 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -464,7 +464,7 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Col, Notification, Row } from "@canonical/react-components";
 import useEventListener from "@use-it/event-listener";
 import { updateMaxHeight } from "util/updateMaxHeight";
@@ -476,8 +476,8 @@ import { fetchNetworkState } from "api/networks";
 import { humanFileSize } from "util/helpers";
 import Loader from "components/Loader";
 import { filterUsedByType, LxdUsedBy } from "util/usedBy";
-import InstanceLink from "pages/instances/InstanceLink";
 import ExpandableList from "components/ExpandableList";
+import UsedByItem from "components/UsedByItem";
 &nbsp;
 interface Props {
   network: LxdNetwork;
@@ -618,11 +618,13 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
                   {data.instances.length &gt; <span class="branch-0 cbranch-no" title="branch not covered" >0 ? (</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;ExpandableList</span>
 <span class="cstat-no" title="statement not covered" >                      items={data.instances.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >                        &lt;div key={item.name}&gt;</span></span>
-<span class="cstat-no" title="statement not covered" >                          &lt;InstanceLink instance={item} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          {item.project !== project &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >                            ` (project ${item.project})`}</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >                        &lt;UsedByItem</span></span>
+<span class="cstat-no" title="statement not covered" >                          key={item.name}</span>
+<span class="cstat-no" title="statement not covered" >                          item={item}</span>
+<span class="cstat-no" title="statement not covered" >                          activeProject={project}</span>
+<span class="cstat-no" title="statement not covered" >                          type="instance"</span>
+<span class="cstat-no" title="statement not covered" >                          to={`/ui/project/${item.project}/instance/${item.name}`}</span>
+<span class="cstat-no" title="statement not covered" >                        /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                      ))}</span>
                     /&gt;
                   ) : (
@@ -638,15 +640,13 @@ const NetworkDetailOverview: FC&lt;Props&gt; = <span class="cstat-no" title="sta
                   {data.profiles.length &gt; <span class="branch-0 cbranch-no" title="branch not covered" >0 ? (</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;ExpandableList</span>
 <span class="cstat-no" title="statement not covered" >                      items={data.profiles.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >                        &lt;div key={item.name}&gt;</span></span>
-<span class="cstat-no" title="statement not covered" >                          &lt;Link</span>
-<span class="cstat-no" title="statement not covered" >                            to={`/ui/project/${item.project}/profile/${item.name}`}</span>
-<span class="cstat-no" title="statement not covered" >                          &gt;</span>
-<span class="cstat-no" title="statement not covered" >                            {item.name}</span>
-<span class="cstat-no" title="statement not covered" >                          &lt;/Link&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          {item.project !== project &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >                            ` (project ${item.project})`}</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >                        &lt;UsedByItem</span></span>
+<span class="cstat-no" title="statement not covered" >                          key={item.name}</span>
+<span class="cstat-no" title="statement not covered" >                          item={item}</span>
+<span class="cstat-no" title="statement not covered" >                          activeProject={project}</span>
+<span class="cstat-no" title="statement not covered" >                          type="profile"</span>
+<span class="cstat-no" title="statement not covered" >                          to={`/ui/project/${item.project}/profile/${item.name}`}</span>
+<span class="cstat-no" title="statement not covered" >                        /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                      ))}</span>
                     /&gt;
                   ) : (
@@ -670,7 +670,7 @@ export default NetworkDetailOverview;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-10T15:35:42.272Z
+                at 2024-10-21T12:14:33.581Z
             </div>
         <script src="../../../../../../../../prettify.js"></script>
         <script>
