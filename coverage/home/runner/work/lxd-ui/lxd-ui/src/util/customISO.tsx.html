@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for home/runner/work/lxd-ui/lxd-ui/src/context/useDocs.tsx</title>
+    <title>Code coverage report for home/runner/work/lxd-ui/lxd-ui/src/util/customISO.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../../index.html">All files</a> / <a href="index.html">home/runner/work/lxd-ui/lxd-ui/src/context</a> useDocs.tsx</h1>
+        <h1><a href="../../../../../../../index.html">All files</a> / <a href="index.html">home/runner/work/lxd-ui/lxd-ui/src/util</a> customISO.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/21</span>
+                <span class='fraction'>7/11</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -70,40 +70,19 @@
 <a name='L5'></a><a href='#L5'>5</a>
 <a name='L6'></a><a href='#L6'>6</a>
 <a name='L7'></a><a href='#L7'>7</a>
-<a name='L8'></a><a href='#L8'>8</a>
-<a name='L9'></a><a href='#L9'>9</a>
-<a name='L10'></a><a href='#L10'>10</a>
-<a name='L11'></a><a href='#L11'>11</a>
-<a name='L12'></a><a href='#L12'>12</a>
-<a name='L13'></a><a href='#L13'>13</a>
-<a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">245x</span>
-<span class="cline-any cline-yes">245x</span>
-<span class="cline-any cline-yes">245x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">49604x</span>
-<span class="cline-any cline-yes">285x</span>
-<span class="cline-any cline-yes">285x</span>
-<span class="cline-any cline-yes">49334x</span>
-<span class="cline-any cline-yes">49334x</span>
-<span class="cline-any cline-yes">49334x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useSupportedFeatures } from "./useSupportedFeatures"<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >;</span></span>
+<a name='L8'></a><a href='#L8'>8</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const sanitizeISOAlias = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>lias: string): string =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return alias.replace(/[^A-Za-z0-9.-]/g, "-");</span>
+};
 &nbsp;
-export const useDocs = <span class="fstat-no" title="function not covered" >(): string =&gt; {</span>
-  const remoteBase = <span class="cstat-no" title="statement not covered" >"https://documentation.ubuntu.com/lxd/en/latest";</span>
-  const localBase = <span class="cstat-no" title="statement not covered" >"/documentation";</span>
-&nbsp;
-  const { hasLocalDocumentation } = <span class="cstat-no" title="statement not covered" >useSupportedFeatures();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!hasLocalDocumentation) {</span>
-<span class="cstat-no" title="statement not covered" >    return remoteBase;</span>
-  }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return localBase;</span>
+export const isValidISOAlias = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>lias: string): boolean =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return /^[A-Za-z0-9.-]+$/.test(alias) || !alias;</span>
 };
 &nbsp;</pre></td></tr></table></pre>
 
