@@ -82,6 +82,9 @@
     You should enable a firewall as `dotrun` exposes an api to start or interact with unprivileged containers on your public
     ip via port `8407`. Ensure that the lxd API on port `8443` is open, so `dotrun` can access it.
 
+    For local development, the UI is served by the Vite development server, which uses port 3000 by default. 
+    If you have another process listening on this port on your system, you should set a different port by adding a custom `VITE_PORT` variable in the `.env.local` file.
+
     The first time, running `dotrun` will generate certificates for you. You can find them in the `keys` folder on the top level of
     the repo. Trust them from your local `lxc` with
 
