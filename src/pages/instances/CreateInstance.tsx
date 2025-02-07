@@ -97,6 +97,7 @@ import BootForm, {
   BootFormValues,
   bootPayload,
 } from "components/forms/BootForm";
+import { instanceProfilesWarning } from "util/instanceEdit";
 
 export type CreateInstanceFormValues = InstanceDetailsFormValues &
   FormDeviceValues &
@@ -434,6 +435,7 @@ const CreateInstance: FC = () => {
   const networkError = hasNetworkError(formik);
   const hasErrors =
     !formik.isValid || !formik.values.image || diskError || networkError;
+  const isCreating = true;
 
   return (
     <BaseLayout title="Create an instance" contentClassName="create-instance">
@@ -449,6 +451,7 @@ const CreateInstance: FC = () => {
         )}
         <Row className="form-contents" key={section}>
           <Col size={12}>
+            {instanceProfilesWarning([], profiles, isCreating)}
             <NotificationRow />
             {section === MAIN_CONFIGURATION && (
               <InstanceCreateDetailsForm
