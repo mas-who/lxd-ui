@@ -86,6 +86,7 @@ export interface StoragePoolFormValues {
   zfs_export?: string;
   zfs_pool_name?: string;
   zfsPoolNamePerClusterMember?: ClusterSpecificValues;
+  editRestriction?: string;
 }
 
 interface Props {
