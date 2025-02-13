@@ -59,6 +59,14 @@ const InstanceConsole: FC<Props> = ({ instance }) => {
 
   const { handleStart, isLoading } = useInstanceStart(instance);
 
+  if (!canAccessInstanceConsole(instance)) {
+    return (
+      <Notification severity="caution" title="Restricted permissions">
+        You do not have permission to access the console for this instance.
+      </Notification>
+    );
+  }
+
   return (
     <div className="instance-console-tab">
       {isVm && canAccessInstanceConsole(instance) && (
@@ -147,11 +155,11 @@ const InstanceConsole: FC<Props> = ({ instance }) => {
           showNotRunningInfo={showNotRunningInfo}
         />
       )}
-      {!canAccessInstanceConsole(instance) && (
+      {/* {!canAccessInstanceConsole(instance) && (
         <Notification severity="caution" title="Restricted permissions">
           You do not have permission to access the console for this instance.
         </Notification>
-      )}
+      )} */}
     </div>
   );
 };

@@ -47,7 +47,6 @@ import {
   getInstanceEditValues,
   getInstancePayload,
   InstanceEditSchema,
-  instanceProfilesWarning,
 } from "util/instanceEdit";
 import { slugify } from "util/slugify";
 import { useEventQueue } from "context/eventQueue";
@@ -68,6 +67,7 @@ import InstanceLinkChip from "./InstanceLinkChip";
 import BootForm, { BootFormValues } from "components/forms/BootForm";
 import { useInstanceEntitlements } from "util/entitlements/instances";
 import { fetchProfiles } from "api/profiles";
+import InstanceProfilesWarning from "./InstanceProfilesWarning";
 
 export interface InstanceEditDetailsFormValues {
   name: string;
@@ -214,7 +214,10 @@ const EditInstance: FC<Props> = ({ instance }) => {
         )}
         <Row className="form-contents" key={section}>
           <Col size={12}>
-            {instanceProfilesWarning(instance.profiles, profiles)}
+            <InstanceProfilesWarning
+              instanceProfiles={instance.profiles}
+              profiles={profiles}
+            />
             {(section === slugify(MAIN_CONFIGURATION) || !section) && (
               <EditInstanceDetails formik={formik} project={project} />
             )}
