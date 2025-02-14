@@ -38,9 +38,9 @@ const InstanceSnapshotActions: FC<Props> = ({
   const [restoreState, setRestoreState] = useState(true);
   const queryClient = useQueryClient();
   const { canManageInstanceSnapshots } = useInstanceEntitlements();
-  const disabledReason = !canManageInstanceSnapshots(instance)
-    ? "You do not have permission to manage snapshots"
-    : undefined;
+  const disabledReason = canManageInstanceSnapshots(instance)
+    ? undefined
+    : "You do not have permission to manage snapshots for this instance";
 
   const handleDelete = () => {
     setDeleting(true);

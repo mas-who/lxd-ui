@@ -60,17 +60,15 @@ const ProfileSelector: FC<Props> = ({
 
   profiles.sort(defaultFirst);
 
-  // determine if any selected profile is not in the profiles list
-  // this indicates that there are profiles set on the instance that the user does not have permission to view
-  const profileNames = profiles.map((profile) => profile.name);
-  const restrictedProfileNames = (initialProfiles || []).filter(
-    (profile) => !profileNames.find((name) => name === profile),
-  );
+  // we combine the initial instance profiles and the profiles from the API list endpoint into a deduplicated list
+  // this way, we take into account profiles that the user does not have permission to view
+  const profileNames = [
+    ...new Set(
+      profiles.map((profile) => profile.name).concat(initialProfiles ?? []),
+    ),
+  ];
 
-  const allProfileNames = [...profileNames, ...restrictedProfileNames];
-  const unselected = selected.length
-    ? allProfileNames.filter((name) => !selected.includes(name))
-    : allProfileNames;
+  const unselected = profileNames.filter((name) => !selected.includes(name));
 
   const addProfile = () => {
     const nextProfile = unselected[0];
@@ -81,25 +79,19 @@ const ProfileSelector: FC<Props> = ({
 
   const profileOptions = (currSelectIndex: number) => {
     const profileOptions: { label: string; value: string }[] = [];
-    const profileSelectFilter = (profileName: string) =>
-      !selected.includes(profileName) ||
-      selected.indexOf(profileName) === currSelectIndex;
 
-    profileNames.filter(profileSelectFilter).forEach((name) => {
-      profileOptions.push({
-        label: name,
-        value: name,
-      });
-    });
-
-    if (restrictedProfileNames.length) {
-      restrictedProfileNames.filter(profileSelectFilter).forEach((name) => {
+    profileNames
+      .filter(
+        (profileName: string) =>
+          !selected.includes(profileName) ||
+          selected.indexOf(profileName) === currSelectIndex,
+      )
+      .forEach((name) => {
         profileOptions.push({
           label: name,
           value: name,
         });
       });
-    }
 
     return profileOptions;
   };
