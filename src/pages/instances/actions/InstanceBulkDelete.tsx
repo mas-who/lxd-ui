@@ -100,8 +100,8 @@ const InstanceBulkDelete: FC<Props> = ({ instances, onStart, onFinish }) => {
 
     return (
       <Fragment key="restricted-instances">
-        - {restrictedCount} restricted {pluralize("instance", deleteCount)} will
-        be ignored
+        - {restrictedCount} {pluralize("instance", deleteCount)} that you do not
+        have permission to delete will be ignored
         <br />
       </Fragment>
     );
@@ -125,7 +125,11 @@ const InstanceBulkDelete: FC<Props> = ({ instances, onStart, onFinish }) => {
     <div className="p-segmented-control bulk-actions">
       <div className="p-segmented-control__list bulk-action-frame">
         <ConfirmationButton
-          onHoverText="Delete instances"
+          onHoverText={
+            restrictedCount === totalCount
+              ? `You do not have permission to delete the selected ${pluralize("instance", instances.length)}`
+              : "Delete instances"
+          }
           appearance="base"
           className="u-no-margin--bottom has-icon"
           loading={isLoading}

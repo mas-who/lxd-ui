@@ -101,7 +101,6 @@ import BootForm, {
   BootFormValues,
   bootPayload,
 } from "components/forms/BootForm";
-import InstanceProfilesWarning from "./InstanceProfilesWarning";
 
 export type CreateInstanceFormValues = InstanceDetailsFormValues &
   FormDeviceValues &
@@ -284,7 +283,7 @@ const CreateInstance: FC = () => {
     }
   };
 
-  const { data: profiles = [] } = useQuery({
+  const { data: profiles = [], isLoading: isProfileLoading } = useQuery({
     queryKey: [queryKeys.profiles],
     queryFn: () => fetchProfiles(project),
   });
@@ -366,23 +365,17 @@ const CreateInstance: FC = () => {
     },
   });
 
-  const getInitialProfiles = () => {
-    const defaultProfileExist = profiles.find(
-      (profile) => profile.name === "default",
-    );
-
-    if (defaultProfileExist) {
-      return ["default"];
-    }
-
-    return [profiles[0].name];
-  };
-
   useEffect(() => {
-    if (profiles.length) {
-      void formik.setFieldValue("profiles", getInitialProfiles());
+    if (!isProfileLoading) {
+      const hasDefaultProfileAccess = profiles.find(
+        (profile) => profile.name === "default",
+      );
+
+      if (!hasDefaultProfileAccess) {
+        void formik.setFieldValue("profiles", []);
+      }
     }
-  }, [profiles]);
+  }, [isProfileLoading, profiles]);
 
   const isLocalIsoImage = formik.values.image?.server === LOCAL_ISO;
 
@@ -472,11 +465,6 @@ const CreateInstance: FC = () => {
         )}
         <Row className="form-contents" key={section}>
           <Col size={12}>
-            <InstanceProfilesWarning
-              instanceProfiles={[]}
-              profiles={profiles}
-              isCreating={true}
-            />
             <NotificationRow />
             {section === MAIN_CONFIGURATION && (
               <InstanceCreateDetailsForm

@@ -114,16 +114,6 @@ const InstanceBulkAction: FC<Props> = ({
       return null;
     }
 
-    if (allRestricted) {
-      return (
-        <Fragment key="restricted">
-          - You do not have permission to {confirmLabel.toLowerCase()} the
-          selected {pluralize("instance", instances.length)}.
-          <br />
-        </Fragment>
-      );
-    }
-
     return (
       <Fragment key="restricted">
         - No action for <b>{restrictedInstances.length}</b>{" "}
@@ -137,7 +127,7 @@ const InstanceBulkAction: FC<Props> = ({
   return (
     <ConfirmationButton
       appearance="base"
-      disabled={isDisabled || !hasChangedStates}
+      disabled={isDisabled || !hasChangedStates || allRestricted}
       loading={isLoading}
       className="u-no-margin--right u-no-margin--bottom bulk-action has-icon"
       confirmationModalProps={{
@@ -153,10 +143,14 @@ const InstanceBulkAction: FC<Props> = ({
         onConfirm: onClick,
         confirmButtonLabel: confirmLabel,
         confirmButtonAppearance: confirmAppearance,
-        confirmButtonDisabled: allRestricted,
       }}
       shiftClickEnabled
       showShiftClickHint
+      onHoverText={
+        allRestricted
+          ? `You do not have permission to ${confirmLabel.toLowerCase()} the selected ${pluralize("instance", instances.length)}`
+          : confirmLabel
+      }
     >
       <Icon name={icon} />
       <span>{confirmLabel}</span>

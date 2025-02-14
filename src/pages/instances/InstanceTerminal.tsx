@@ -218,15 +218,21 @@ const InstanceTerminal: FC<Props> = ({ instance, refreshInstance }) => {
 
   const { handleStart, isLoading: isStartLoading } = useInstanceStart(instance);
 
+  if (!canExec) {
+    return (
+      <Notification severity="caution" title="Restricted permissions">
+        You do not have permission to use the terminal for this instance.
+      </Notification>
+    );
+  }
+
   return (
     <div className="instance-terminal-tab">
       {canConnect && (
         <>
-          {canExec && (
-            <div className="p-panel__controls">
-              <ReconnectTerminalBtn reconnect={setPayload} payload={payload} />
-            </div>
-          )}
+          <div className="p-panel__controls">
+            <ReconnectTerminalBtn reconnect={setPayload} payload={payload} />
+          </div>
           <NotificationRow />
           {isLoading && <Loader text="Loading terminal session..." />}
           {controlWs && (
@@ -244,7 +250,7 @@ const InstanceTerminal: FC<Props> = ({ instance, refreshInstance }) => {
           )}
         </>
       )}
-      {!canConnect && canExec && (
+      {!canConnect && (
         <EmptyState
           className="empty-state"
           image={<Icon name="pods" className="empty-state-icon" />}
@@ -269,11 +275,6 @@ const InstanceTerminal: FC<Props> = ({ instance, refreshInstance }) => {
             Start instance
           </ActionButton>
         </EmptyState>
-      )}
-      {!canExec && (
-        <Notification severity="caution" title="Restricted permissions">
-          You do not have permission to use the terminal for this instance.
-        </Notification>
       )}
     </div>
   );

@@ -32,7 +32,7 @@ const CreateImageFromInstanceBtn: FC<Props> = ({
 
   const getDisabledReason = () => {
     if (!canCreateImages(project)) {
-      return `You do not have permission to create images in project ${instance.project}`;
+      return `You do not have permission to create images in this project`;
     }
 
     const isDisabled =

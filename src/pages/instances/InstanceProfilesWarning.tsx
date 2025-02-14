@@ -5,37 +5,21 @@ import { LxdProfile } from "types/profile";
 interface Props {
   instanceProfiles: string[];
   profiles?: LxdProfile[];
-  isCreating?: boolean;
 }
 
-const InstanceProfilesWarning: FC<Props> = ({
-  instanceProfiles,
-  profiles,
-  isCreating,
-}) => {
-  const editContext = !isCreating
-    ? "This may cause inherited configuration values to be displayed incorrectly."
-    : "";
+const InstanceProfilesWarning: FC<Props> = ({ instanceProfiles, profiles }) => {
+  const isMissingSomeProfiles = instanceProfiles.some(
+    (profile) => !profiles?.find((p) => p.name === profile),
+  );
 
-  if (!profiles?.length) {
+  if (isMissingSomeProfiles) {
     return (
       <Notification severity="caution" title="Restricted permissions">
-        You do not have permission to view profiles in the current project.{" "}
-        {editContext}
+        You do not have permission to view all profiles applied to this
+        instance. This may cause inherited configuration values to be displayed
+        incorrectly.
       </Notification>
     );
-  }
-
-  const profilesSet = new Set(profiles.map((profile) => profile.name));
-  for (const instanceProfile of instanceProfiles) {
-    if (!profilesSet.has(instanceProfile)) {
-      return (
-        <Notification severity="caution" title="Restricted permissions">
-          You do not have permission to view some profiles applied to this
-          instance. {editContext}
-        </Notification>
-      );
-    }
   }
 
   return null;

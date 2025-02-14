@@ -6,7 +6,6 @@ import Loader from "components/Loader";
 import type { LxdInstance } from "types/instance";
 import { fetchProfiles } from "api/profiles";
 import ResourceLink from "components/ResourceLink";
-import InstanceProfilesWarning from "./InstanceProfilesWarning";
 
 interface Props {
   instance: LxdInstance;
@@ -36,23 +35,22 @@ const InstanceOverviewProfiles: FC<Props> = ({ instance, onFailure }) => {
     },
   ];
 
-  const profileRows = instance.profiles.map((profile) => {
-    if (profiles.length < 1) {
-      return {
-        columns: undefined,
-      };
-    }
-    const description =
-      profiles.filter((item) => item.name === profile)[0]?.description ?? "";
+  const profileRows = instance.profiles.map((profileName) => {
+    const profile = profiles.find((item) => item.name === profileName);
+    const description = profile?.description ?? "";
     return {
-      key: profile,
+      key: profileName,
       columns: [
         {
           content: (
             <ResourceLink
               type="profile"
-              value={profile}
-              to={`/ui/project/${instance.project}/profile/${profile}`}
+              value={profileName}
+              to={
+                profile
+                  ? `/ui/project/${instance.project}/profile/${profileName}`
+                  : ""
+              }
             />
           ),
           role: "rowheader",
@@ -66,30 +64,17 @@ const InstanceOverviewProfiles: FC<Props> = ({ instance, onFailure }) => {
         },
       ],
       sortData: {
-        name: profile.toLowerCase(),
+        name: profileName.toLowerCase(),
         description: description.toLowerCase(),
       },
     };
   });
 
-  const getContent = () => {
-    if (isLoading) {
-      return <Loader text="Loading profiles..." />;
-    }
+  if (isLoading) {
+    return <Loader text="Loading profiles..." />;
+  }
 
-    if (!profiles.length) {
-      return (
-        <InstanceProfilesWarning
-          instanceProfiles={instance.profiles}
-          profiles={profiles}
-        />
-      );
-    }
-
-    return <MainTable headers={profileHeaders} rows={profileRows} sortable />;
-  };
-
-  return getContent();
+  return <MainTable headers={profileHeaders} rows={profileRows} sortable />;
 };
 
 export default InstanceOverviewProfiles;

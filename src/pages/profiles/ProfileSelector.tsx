@@ -60,48 +60,21 @@ const ProfileSelector: FC<Props> = ({
 
   profiles.sort(defaultFirst);
 
-  // determine if any selected profile is not in the profiles list
-  // this indicates that there are profiles set on the instance that the user does not have permission to view
-  const profileNames = profiles.map((profile) => profile.name);
-  const restrictedProfileNames = (initialProfiles || []).filter(
-    (profile) => !profileNames.find((name) => name === profile),
-  );
+  // we combine the initial instance profiles and the profiles from the API list endpoint into a deduplicated list
+  // this way, we take into account profiles that the user does not have permission to view
+  const profileNames = [
+    ...new Set(
+      profiles.map((profile) => profile.name).concat(initialProfiles ?? []),
+    ),
+  ];
 
-  const allProfileNames = [...profileNames, ...restrictedProfileNames];
-  const unselected = selected.length
-    ? allProfileNames.filter((name) => !selected.includes(name))
-    : allProfileNames;
+  const unselected = profileNames.filter((name) => !selected.includes(name));
 
   const addProfile = () => {
     const nextProfile = unselected[0];
     if (nextProfile) {
       setSelected([...selected, nextProfile]);
     }
-  };
-
-  const profileOptions = (currSelectIndex: number) => {
-    const profileOptions: { label: string; value: string }[] = [];
-    const profileSelectFilter = (profileName: string) =>
-      !selected.includes(profileName) ||
-      selected.indexOf(profileName) === currSelectIndex;
-
-    profileNames.filter(profileSelectFilter).forEach((name) => {
-      profileOptions.push({
-        label: name,
-        value: name,
-      });
-    });
-
-    if (restrictedProfileNames.length) {
-      restrictedProfileNames.filter(profileSelectFilter).forEach((name) => {
-        profileOptions.push({
-          label: name,
-          value: name,
-        });
-      });
-    }
-
-    return profileOptions;
   };
 
   return (
@@ -123,7 +96,18 @@ const ProfileSelector: FC<Props> = ({
                 newValues[index] = e.target.value;
                 setSelected(newValues);
               }}
-              options={profileOptions(index)}
+              options={profileNames
+                .filter(
+                  (profile: string) =>
+                    !selected.includes(profile) ||
+                    selected.indexOf(profile) === index,
+                )
+                .map((profile) => {
+                  return {
+                    label: profile,
+                    value: profile,
+                  };
+                })}
               value={value}
               disabled={readOnly || !!disabledReason}
               title={disabledReason ?? title}
@@ -131,46 +115,44 @@ const ProfileSelector: FC<Props> = ({
           </div>
 
           <div className="profile-actions">
-            {!readOnly &&
-              (index > 0 || selected.length > 1) &&
-              !disabledReason && (
-                <div>
-                  <Button
-                    appearance="link"
-                    className="profile-action-btn"
-                    onClick={() => {
-                      const newSelection = [...selected];
-                      newSelection.splice(index, 1);
-                      newSelection.splice(index - 1, 0, value);
-                      setSelected(newSelection);
-                    }}
-                    type="button"
-                    aria-label="move profile up"
-                    title="move profile up"
-                    disabled={index === 0}
-                  >
-                    <Icon name="chevron-up" />
-                  </Button>
-                  <Button
-                    appearance="link"
-                    className="profile-action-btn"
-                    onClick={() => {
-                      const newSelection = [...selected];
-                      newSelection.splice(index, 1);
-                      newSelection.splice(index + 1, 0, value);
-                      setSelected(newSelection);
-                    }}
-                    type="button"
-                    aria-label="move profile down"
-                    title="move profile down"
-                    disabled={index === selected.length - 1}
-                  >
-                    <Icon name="chevron-down" />
-                  </Button>
-                </div>
-              )}
+            {!readOnly && (index > 0 || selected.length > 1) && (
+              <div>
+                <Button
+                  appearance="link"
+                  className="profile-action-btn"
+                  onClick={() => {
+                    const newSelection = [...selected];
+                    newSelection.splice(index, 1);
+                    newSelection.splice(index - 1, 0, value);
+                    setSelected(newSelection);
+                  }}
+                  type="button"
+                  aria-label="move profile up"
+                  title={disabledReason ?? "move profile up"}
+                  disabled={!!disabledReason || index === 0}
+                >
+                  <Icon name="chevron-up" />
+                </Button>
+                <Button
+                  appearance="link"
+                  className="profile-action-btn"
+                  onClick={() => {
+                    const newSelection = [...selected];
+                    newSelection.splice(index, 1);
+                    newSelection.splice(index + 1, 0, value);
+                    setSelected(newSelection);
+                  }}
+                  type="button"
+                  aria-label="move profile down"
+                  title={disabledReason ?? "move profile down"}
+                  disabled={!!disabledReason || index === selected.length - 1}
+                >
+                  <Icon name="chevron-down" />
+                </Button>
+              </div>
+            )}
 
-            {!readOnly && !disabledReason && (
+            {!readOnly && (
               <Button
                 appearance="link"
                 className="profile-remove-btn"
@@ -178,6 +160,8 @@ const ProfileSelector: FC<Props> = ({
                   setSelected(selected.filter((item) => item !== value))
                 }
                 type="button"
+                disabled={!!disabledReason}
+                title={disabledReason}
               >
                 Remove
               </Button>
@@ -185,13 +169,14 @@ const ProfileSelector: FC<Props> = ({
           </div>
         </div>
       ))}
-      {!readOnly && !disabledReason && (
+      {!readOnly && (
         <Button
           id="addProfileButton"
-          disabled={unselected.length === 0}
+          disabled={!!disabledReason || unselected.length === 0}
           className="profile-add-btn"
           onClick={addProfile}
           type="button"
+          title={disabledReason}
         >
           Add profile
         </Button>

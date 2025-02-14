@@ -123,9 +123,9 @@ const EditInstance: FC<Props> = ({ instance }) => {
   useEffect(updateFormHeight, [section]);
   useEventListener("resize", updateFormHeight);
 
-  const editRestriction = !canEditInstance(instance)
-    ? "You do not have permission to edit this instance"
-    : undefined;
+  const editRestriction = canEditInstance(instance)
+    ? undefined
+    : "You do not have permission to edit this instance";
 
   const formik = useFormik<EditInstanceFormValues>({
     initialValues: getInstanceEditValues(instance, editRestriction),
@@ -215,10 +215,12 @@ const EditInstance: FC<Props> = ({ instance }) => {
         )}
         <Row className="form-contents" key={section}>
           <Col size={12}>
-            <InstanceProfilesWarning
-              instanceProfiles={instance.profiles}
-              profiles={profiles}
-            />
+            {section !== slugify(YAML_CONFIGURATION) && (
+              <InstanceProfilesWarning
+                instanceProfiles={instance.profiles}
+                profiles={profiles}
+              />
+            )}
             {(section === slugify(MAIN_CONFIGURATION) || !section) && (
               <EditInstanceDetails formik={formik} project={project} />
             )}
@@ -273,6 +275,8 @@ const EditInstance: FC<Props> = ({ instance }) => {
                   ensureEditMode(formik);
                   void formik.setFieldValue("yaml", yaml);
                 }}
+                readOnly={!!formik.values.editRestriction}
+                readOnlyMessage={{ value: formik.values.editRestriction ?? "" }}
               >
                 <YamlNotification
                   entity="instance"
