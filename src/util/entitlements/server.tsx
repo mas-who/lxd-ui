@@ -13,7 +13,17 @@ export const useServerEntitlements = () => {
     hasEntitlement(isFineGrained, "admin", serverEntitlements) ||
     hasEntitlement(isFineGrained, "viewer", serverEntitlements);
 
+  const canCreateIdentities = () =>
+    hasEntitlement(
+      isFineGrained,
+      "can_create_identities",
+      serverEntitlements,
+    ) ||
+    hasEntitlement(isFineGrained, "permission_manager", serverEntitlements) ||
+    hasEntitlement(isFineGrained, "admin", serverEntitlements);
+
   return {
+    canCreateIdentities,
     canEditServerConfiguration,
     canViewMetrics,
   };
