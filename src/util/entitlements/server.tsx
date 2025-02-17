@@ -27,10 +27,16 @@ export const useServerEntitlements = () => {
     hasEntitlement(isFineGrained, "permission_manager", serverEntitlements) ||
     hasEntitlement(isFineGrained, "admin", serverEntitlements);
 
+  const canViewPermissions = () =>
+    hasEntitlement(isFineGrained, "can_view_permissions", serverEntitlements) ||
+    hasEntitlement(isFineGrained, "permission_manager", serverEntitlements) ||
+    hasEntitlement(isFineGrained, "admin", serverEntitlements);
+
   return {
     canCreateGroups,
     canCreateIdentities,
     canEditServerConfiguration,
     canViewMetrics,
+    canViewPermissions,
   };
 };
