@@ -28,7 +28,7 @@ export const startInstanceFromPanel = async (page: Page, instance: string) => {
   });
   const startButton = instanceDetailPanel.locator("css=button[title=Start]");
   await startButton.click();
-  await page.waitForSelector(`text=Instance ${instance} started.`);
+  await checkInstanceStatus(page, instance, "Running");
 };
 
 export const stopInstanceFromPanel = async (page: Page, instance: string) => {
@@ -43,7 +43,7 @@ export const stopInstanceFromPanel = async (page: Page, instance: string) => {
     hasText: "Stop",
   });
   await confirmStopButton.click();
-  await page.waitForSelector(`text=Instance ${instance} stopped.`);
+  await checkInstanceStatus(page, instance, "Stopped");
 };
 
 export const navigateToInstanceDetails = async (
@@ -61,4 +61,23 @@ export const navigateToInstanceDetails = async (
     hasText: instance,
   });
   await expect(instanceDetailTitle).toBeVisible();
+};
+
+export const getInstanceRow = async (page: Page, instance: string) => {
+  await page.waitForLoadState("networkidle");
+  await gotoURL(page, "/ui/");
+  const instanceRow = page.getByRole("row", {
+    name: `Select ${instance} Name Type Description Status Actions`,
+  });
+  return instanceRow;
+};
+
+export const checkInstanceStatus = async (
+  page: Page,
+  instance: string,
+  status: string,
+) => {
+  const instanceRow = await getInstanceRow(page, instance);
+  await expect(instanceRow.getByLabel("Status")).toHaveText(status);
+  await openInstancePanel(page, instance);
 };
