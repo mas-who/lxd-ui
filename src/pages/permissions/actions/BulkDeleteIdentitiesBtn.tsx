@@ -83,7 +83,7 @@ const BulkDeleteIdentitiesBtn: FC<Props & ButtonProps> = ({
               ))}
             </ul>
             You do not have permission to delete the following{" "}
-            {pluralize("identity", deletableIdentities.length)}:
+            {pluralize("identity", restrictedIdentities.length)}:
             <ul>
               {restrictedIdentities.map((identity) => (
                 <li key={identity.name}>{identity.name}</li>

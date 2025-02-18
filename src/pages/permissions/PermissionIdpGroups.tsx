@@ -127,7 +127,7 @@ const PermissionIdpGroups: FC = () => {
                   title={
                     canEditGroup(idpGroup)
                       ? "Edit details"
-                      : "You do not have permission to edit this IDP group"
+                      : "You do not have permission to modify this IDP group"
                   }
                   disabled={!canEditGroup(idpGroup)}
                 >

@@ -252,15 +252,6 @@ const EditGroupIdentitiesPanel: FC<Props> = ({ groups }) => {
     defaultSort: "name",
   });
 
-  const confirmButtonText = modifiedIdentities.size
-    ? `Apply ${modifiedIdentities.size} identity ${pluralize("change", modifiedIdentities.size)}`
-    : "Modify identities";
-
-  const panelTitle =
-    groups.length > 1
-      ? `Change identities for ${groups.length} groups`
-      : `Change identities for ${groups[0]?.name}`;
-
   const content = (
     <ScrollableTable
       dependencies={[identities, modifiedIdentities.size, notify.notification]}
@@ -286,6 +277,15 @@ const EditGroupIdentitiesPanel: FC<Props> = ({ groups }) => {
       />
     </ScrollableTable>
   );
+
+  const confirmButtonText = modifiedIdentities.size
+    ? `Apply ${modifiedIdentities.size} identity ${pluralize("change", modifiedIdentities.size)}`
+    : "Modify identities";
+
+  const panelTitle =
+    groups.length > 1
+      ? `Change identities for ${groups.length} groups`
+      : `Change identities for ${groups[0]?.name}`;
 
   return (
     <>
