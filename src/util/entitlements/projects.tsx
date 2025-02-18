@@ -26,9 +26,17 @@ export const useProjectEntitlements = () => {
       project?.access_entitlements,
     );
 
+  const canCreateNetworks = (project?: LxdProject) =>
+    hasEntitlement(
+      isFineGrained,
+      "can_create_networks",
+      project?.access_entitlements,
+    );
+
   return {
     canCreateInstances,
     canCreateImages,
     canCreateImageAliases,
+    canCreateNetworks,
   };
 };
